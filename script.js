@@ -8,9 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             const target = document.querySelector(link.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
+            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
         });
     });
 
@@ -21,10 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.12,
-        rootMargin: "0px 0px -60px 0px"
-    });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
