@@ -49,6 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("pointermove", (e) => {
+        const x = ((e.clientX / window.innerWidth) - 0.5) * 16;
+        const y = ((e.clientY / window.innerHeight) - 0.5) * 16;
+        root.style.setProperty("--mx", x.toFixed(2));
+        root.style.setProperty("--my", y.toFixed(2));
+    }, { passive: true });
+
     updateProgress();
 
     const lanyardAPI = "https://api.lanyard.rest/v1/users/738501782413639790";
@@ -136,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="widget-icon">♪</div>
                         <div>
                             <p class="widget-placeholder-title">No audio detected right now</p>
-                            <p class="widget-placeholder-subtitle">The panel is ready and will animate when Spotify goes live.</p>
                         </div>
                     </div>
                 `;
@@ -162,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="widget-icon">♪</div>
                         <div>
                             <p class="widget-placeholder-title">Spotify unavailable</p>
-                            <p class="widget-placeholder-subtitle">The widget will recover automatically when the connection returns.</p>
                         </div>
                     </div>
                 `;
