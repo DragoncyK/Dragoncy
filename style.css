@@ -1,331 +1,284 @@
 :root {
-    /* Main deep palette with integrated pink-red glow */
-    --clr-bg: #0c0c10;
-    --clr-primary: #ff3366; /* Neon Pink/Red */
-    --clr-accent: #ff0055;  /* Deep Red */
-    --clr-details: #00d2ff;  /* Cyber Blue */
-    --clr-glass: rgba(26, 15, 20, 0.7);
-    --clr-text: #ffffff;
-    --font-main: 'Montserrat', sans-serif;
-    --font-titles: 'Orbitron', sans-serif; /* Complex tech title font */
+    --bg-dark: #07070a;
+    --neon-pink: #ff3366;
+    --dark-pink: #cc0033;
+    --text-main: #f0f0f0;
+    --glass-bg: rgba(20, 15, 18, 0.55);
+    --glass-border: rgba(255, 51, 102, 0.25);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font-main);
+    font-family: 'Montserrat', sans-serif;
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--clr-bg);
-    color: var(--clr-text);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
     overflow-x: hidden;
-    line-height: 1.6;
 }
 
-.glowing-text {
-    color: var(--clr-primary);
-    text-shadow: 0 0 10px var(--clr-primary), 0 0 25px var(--clr-accent);
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
 }
 
-.cyber-card {
-    background: var(--clr-glass);
-    border: 1px solid var(--clr-primary);
-    border-radius: 10px;
-    padding: 2.5rem;
-    backdrop-filter: blur(8px); /* Real glassmorphism */
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(255, 51, 102, 0.2);
+.pink-text {
+    color: var(--neon-pink);
 }
 
-.cyber-card:hover {
-    box-shadow: 0 0 30px rgba(255, 51, 102, 0.5);
+/* ========================================= */
+/* EFECTOS DE CRISTAL (Glassmorphism)        */
+/* ========================================= */
+.cyber-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-top: 1px solid rgba(255, 51, 102, 0.5);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cyber-glass:hover {
+    border-color: rgba(255, 51, 102, 0.7);
     transform: translateY(-5px);
 }
 
-h2 {
-    color: var(--clr-primary);
-    font-size: 2.8rem;
-    font-weight: 900;
-    margin-bottom: 2rem;
-    border-left: 10px solid var(--clr-primary);
-    padding-left: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* ========================================================= */
-/* MAXIMIZED & Layered Hero (Intro)                          */
-/* ========================================================= */
-header#hero {
+/* ========================================= */
+/* HERO SECTION (El fondo principal visible) */
+/* ========================================= */
+#hero {
+    position: relative;
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* UPDATE THIS LINE with your exact background image filename */
+    /* Imagen de fondo principal */
     background-image: url('darling_in_the_franxx_zero_two_sitting_near_field_seeing_lighting_on_the_sky_with_background_of_dark_sky_clouds_and_stars_during_night_time_hd_anime.jpg');
+    background-size: cover;
+    background-position: center 20%; /* Muestra más de la parte superior/central */
+    background-attachment: fixed; /* Efecto parallax elegante */
 }
 
-.hero-overlay {
+/* El degradado abajo para que se funda con el negro del resto de la página */
+.hero-fade {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(180deg, rgba(13, 13, 18, 0.1) 0%, rgba(13, 13, 18, 1) 95%);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, var(--bg-dark));
     z-index: 1;
 }
 
-/* Layered portrait blended into hero background on the right */
-.hero-blend-portrait-right {
-    position: absolute;
-    top: 0; right: 0; width: 50%; height: 100%;
-    background-image: url('image_10.png?index=0'); /* Pink Portrait */
-    background-size: contain;
-    background-position: right bottom;
-    background-repeat: no-repeat;
-    opacity: 0.15;
-    mix-blend-mode: screen;
-    z-index: 2;
-}
-
-.blend-overlay-neon-outline {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('image_10.png?index=2'); /* Neon Outline */
-    background-size: cover;
-    background-position: center;
-    opacity: 0.08;
-    mix-blend-mode: color-dodge;
-    z-index: 3;
-    pointer-events: none;
-}
-
 .hero-content {
-    z-index: 4;
+    z-index: 2;
+    background: rgba(0,0,0,0.4);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
 
-/* COMPLEX Title Gltich Effect */
-.glitch {
-    font-size: 7.5rem;
+.glowing-title {
+    font-size: 5rem;
     font-weight: 900;
-    letter-spacing: 10px;
-    position: relative;
-}
-
-.glitch::before, .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0; left: 0;
-}
-
-.glitch::before {
-    left: 4px;
-    text-shadow: -3px 0 var(--clr-details);
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
-}
-
-.glitch::after {
-    left: -4px;
-    text-shadow: 3px 0 var(--clr-primary);
-    clip: rect(100px, 450px, 120px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim {
-    0% { clip: rect(15px, 9999px, 16px, 0); }
-    10% { clip: rect(85px, 9999px, 86px, 0); }
-    20% { clip: rect(3px, 9999px, 10px, 0); }
-    30% { clip: rect(61px, 9999px, 70px, 0); }
-    40% { clip: rect(15px, 9999px, 20px, 0); }
-    50% { clip: rect(98px, 9999px, 105px, 0); }
-    60% { clip: rect(25px, 9999px, 30px, 0); }
-    70% { clip: rect(77px, 9999px, 85px, 0); }
-    80% { clip: rect(15px, 9999px, 25px, 0); }
-    90% { clip: rect(90px, 9999px, 95px, 0); }
-    100% { clip: rect(35px, 9999px, 40px, 0); }
-}
-
-.intro-status {
-    width: fit-content;
-    margin: 20px auto 0;
-    text-align: left;
+    color: #fff;
+    text-shadow: 0 0 10px var(--neon-pink), 0 0 30px var(--dark-pink);
+    margin-bottom: 1rem;
 }
 
 .subtitle {
-    font-size: 1.2rem;
     color: #ff99bb;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    font-style: italic;
+    margin-bottom: 1rem;
 }
 
-.status-lines {
+.status-metrics {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 10px;
+    gap: 20px;
+    justify-content: center;
+    font-size: 0.9rem;
 }
 
-.status-tag {
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: var(--clr-details);
-    color: #000;
-}
-
-.percent { color: var(--clr-details); }
-
-/* ========================================================= */
-/* Integrated Image Overlays (Section and Card-Level)       */
-/* ========================================================= */
-
-/* About Section Blend - Dark Wedding Dress with flowers in corner */
-.blend-wedding-dress-black-left {
-    padding-left: 300px;
-}
-.blend-wedding-dress-black-left::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 300px; height: 100%;
-    background-image: url('image_10.png?index=5'); /* Black Wedding Dress */
-    background-size: cover;
-    background-position: left;
-    background-repeat: no-repeat;
-    opacity: 0.1;
-    mix-blend-mode: screen;
-}
-
-/* Connection Cards Blends */
-.integrated-decor-flower-white {
-    position: relative;
-}
-.integrated-decor-flower-white::after {
-    content: '';
-    position: absolute;
-    bottom: -20px; right: -20px; width: 100px; height: 100px;
-    background-image: url('image_10.png?index=3'); /* Light Wedding Dress Flowers */
-    background-size: contain;
-    opacity: 0.2;
-    mix-blend-mode: screen;
-}
-
-.integrated-decor-silhouette::after {
-    content: '';
-    position: absolute;
-    bottom: -30px; left: -30px; width: 150px; height: 150px;
-    background-image: url('image_10.png?index=4'); /* DITF Silhouette */
-    background-size: contain;
-    opacity: 0.1;
-    mix-blend-mode: soft-light;
-}
-
-/* Interests Section Blend - Zero Two & Hiro Lying Down on the bottom right */
-#interests.section {
-    position: relative;
-    padding-bottom: 150px;
-}
-.blend-zero-two-hiro-lying-right::after {
-    content: '';
-    position: absolute;
-    bottom: -100px; right: 0; width: 50%; height: 150%;
-    background-image: url('image_10.png?index=1'); /* Zero Two & Hiro Lying */
-    background-size: contain;
-    background-position: right bottom;
-    background-repeat: no-repeat;
-    opacity: 0.08;
-    mix-blend-mode: screen;
-    z-index: -1;
-}
-
-/* ========================================================= */
-/* OTHER SECTIONS                                            */
-/* ========================================================= */
+/* ========================================= */
+/* NAVEGACIÓN                                */
+/* ========================================= */
 nav {
     position: sticky;
     top: 0;
-    background: rgba(13, 13, 18, 0.95);
-    padding: 1.2rem 0;
-    border-bottom: 2px solid var(--clr-primary);
-    z-index: 100;
+    background: rgba(7, 7, 10, 0.9);
     backdrop-filter: blur(10px);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 100;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 3.5rem;
+    gap: 3rem;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: bold;
     text-transform: uppercase;
-    font-size: 1.1rem;
-    transition: color 0.3s, text-shadow 0.3s;
+    transition: color 0.3s;
 }
 
 nav a:hover {
-    color: var(--clr-primary);
-    text-shadow: 0 0 10px var(--clr-primary);
+    color: var(--neon-pink);
+    text-shadow: 0 0 8px var(--neon-pink);
 }
 
-main {
-    max-width: 1400px;
+/* ========================================= */
+/* SECCIONES Y DECORACIÓN DE IMÁGENES        */
+/* ========================================= */
+.section-wrapper {
+    position: relative;
+    padding: 100px 20px;
+    min-height: 60vh;
+}
+
+.content-container {
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem;
+    position: relative;
+    z-index: 10; /* Asegura que el texto esté encima de las imágenes */
 }
 
-.section {
-    padding: 120px 0;
+.section-title {
+    font-size: 2.5rem;
+    color: var(--neon-pink);
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--glass-border);
+    padding-bottom: 10px;
+    display: inline-block;
 }
 
-.bio-text p {
-    margin-bottom: 15px;
+.center-text {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-box p {
     font-size: 1.2rem;
-    color: #ff99bb;
+    line-height: 1.8;
+    margin-bottom: 15px;
 }
 
-.connection-grid {
+/* --- MAGIA DE IMÁGENES INTEGRADAS --- */
+/* Estas clases colocan tus imágenes de fondo difuminadas */
+.decor-image {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none; /* Para que no molesten al hacer clic */
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.3; /* Visibles pero no tapan el texto */
+    /* La máscara hace que los bordes se desvanezcan hacia transparente */
+    -webkit-mask-image: radial-gradient(ellipse, black 40%, transparent 70%);
+    mask-image: radial-gradient(ellipse, black 40%, transparent 70%);
+}
+
+.decor-scholar {
+    background-image: url('ScholarZero.jpg');
+    background-position: center top;
+    top: 50px;
+    right: 0;
+    width: 600px;
+    height: 600px;
+}
+
+.decor-novia {
+    background-image: url('Zeronovia.jpg');
+    background-position: center;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 100%;
+    opacity: 0.15; /* Más suave porque va detrás de las tarjetas */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+}
+
+.decor-wife {
+    background-image: url('zerowife.jpg');
+    background-position: center top;
+    top: 50px;
+    left: -50px;
+    width: 500px;
+    height: 700px;
+}
+
+/* ========================================= */
+/* GRIDS DE TARJETAS (Live Line & Interests) */
+/* ========================================= */
+.status-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 30px;
+    margin-top: 20px;
 }
 
-.dynamic-widget {
-    min-height: 200px;
+.widget-card h3 {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 1.5rem;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 1rem;
-    color: #888;
+    gap: 10px;
 }
 
-.cards-container {
+.widget-inner {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.cards-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 25px;
 }
 
-.card h3 {
-    color: var(--clr-details);
+.info-card h3 {
     margin-bottom: 10px;
 }
 
+/* ========================================= */
+/* FOOTER                                    */
+/* ========================================= */
 footer {
     text-align: center;
     padding: 60px 20px;
-    background: #0a0a0f;
-    color: var(--clr-primary);
+    background: #000;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-quote {
+    color: var(--neon-pink);
     font-style: italic;
-    border-top: 1px solid var(--clr-primary);
+    font-size: 1.2rem;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .status-grid, .cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .glowing-title { font-size: 3rem; }
+    .decor-image { opacity: 0.1; } /* Más transparentes en móvil */
 }
