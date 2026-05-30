@@ -1,25 +1,48 @@
-// Smooth fade-in effect on scroll
-document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll('.section');
+// Funcionalidades Interactivas para la Página Ciber-Piloto Zero
 
-    const observer = new IntersectionObserver((entries) => {
+document.addEventListener("DOMContentLoaded", () => {
+    // --- Scroll Suave para la Navegación ---
+    const links = document.querySelectorAll('nav a');
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+    });
+            }
+        });
+    });
+
+    // --- Efecto de Aparición de Tarjetas al Hacer Scroll ---
+    const cyberCards = document.querySelectorAll('.cyber-card, .gallery-item');
+    
+    const observeOptions = {
+        threshold: 0.2, // Trigger when 20% visible
+        rootMargin: "0px 0px -50px 0px" // Slight offset
+    };
+
+    const cardObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transform = entry.target.classList.contains('cyber-card') ? 'translateY(0)' : 'scale(1)';
+                entry.target.style.transition = 'all 0.6s ease-out';
+                cardObserver.unobserve(entry.target); // Only animate once
             }
         });
-    }, {
-        threshold: 0.1
+    }, observeOptions);
+
+    cyberCards.forEach(card => {
+        // Estado inicial para la aparición
+        card.style.opacity = 0;
+        card.style.transform = card.classList.contains('cyber-card') ? 'translateY(30px)' : 'scale(0.9)';
+        cardObserver.observe(card);
     });
 
-    sections.forEach(section => {
-        section.style.opacity = 0;
-        section.style.transform = 'translateY(50px)';
-        section.style.transition = 'all 0.8s ease-out';
-        observer.observe(section);
-    });
-
-    // A little console greeting for anyone inspecting your code 
-    console.log("%cHello, Darling!", "color: #ff3366; font-size: 24px; font-weight: bold;");
+    // Saludo de consola (para ciber-especialistas que inspeccionen)
+    console.log("%cConexión Establecida. Estado del Piloto 002: ACTIVO.", "color: #ff3366; font-size: 20px; font-weight: bold;");
 });
