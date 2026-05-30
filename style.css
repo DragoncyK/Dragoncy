@@ -1,11 +1,13 @@
 :root {
+    /* Main deep palette with integrated pink-red glow */
     --clr-bg: #0c0c10;
-    --clr-primary: #ff3366; 
-    --clr-accent: #ff0055;  
-    --clr-blue: #00eaff;     
+    --clr-primary: #ff3366; /* Neon Pink/Red */
+    --clr-accent: #ff0055;  /* Deep Red */
+    --clr-details: #00d2ff;  /* Cyber Blue */
     --clr-glass: rgba(26, 15, 20, 0.7);
     --clr-text: #ffffff;
     --font-main: 'Montserrat', sans-serif;
+    --font-titles: 'Orbitron', sans-serif; /* Complex tech title font */
 }
 
 * {
@@ -32,21 +34,22 @@ body {
     background: var(--clr-glass);
     border: 1px solid var(--clr-primary);
     border-radius: 10px;
-    padding: 2rem;
-    backdrop-filter: blur(8px);
+    padding: 2.5rem;
+    backdrop-filter: blur(8px); /* Real glassmorphism */
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 51, 102, 0.2);
 }
 
 .cyber-card:hover {
     box-shadow: 0 0 30px rgba(255, 51, 102, 0.5);
-    transform: translateY(-8px);
+    transform: translateY(-5px);
 }
 
-h2.section-title {
+h2 {
     color: var(--clr-primary);
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 900;
     margin-bottom: 2rem;
     border-left: 10px solid var(--clr-primary);
@@ -56,7 +59,7 @@ h2.section-title {
 }
 
 /* ========================================================= */
-/* SECTION: HERO                                            */
+/* MAXIMIZED & Layered Hero (Intro)                          */
 /* ========================================================= */
 header#hero {
     height: 100vh;
@@ -68,6 +71,7 @@ header#hero {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    /* UPDATE THIS LINE with your exact background image filename */
     background-image: url('darling_in_the_franxx_zero_two_sitting_near_field_seeing_lighting_on_the_sky_with_background_of_dark_sky_clouds_and_stars_during_night_time_hd_anime.jpg');
 }
 
@@ -78,14 +82,40 @@ header#hero {
     z-index: 1;
 }
 
-.hero-content {
+/* Layered portrait blended into hero background on the right */
+.hero-blend-portrait-right {
+    position: absolute;
+    top: 0; right: 0; width: 50%; height: 100%;
+    background-image: url('image_10.png?index=0'); /* Pink Portrait */
+    background-size: contain;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    mix-blend-mode: screen;
     z-index: 2;
 }
 
+.blend-overlay-neon-outline {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('image_10.png?index=2'); /* Neon Outline */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    mix-blend-mode: color-dodge;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.hero-content {
+    z-index: 4;
+}
+
+/* COMPLEX Title Gltich Effect */
 .glitch {
-    font-size: 6.5rem;
+    font-size: 7.5rem;
     font-weight: 900;
-    letter-spacing: 5px;
+    letter-spacing: 10px;
     position: relative;
 }
 
@@ -96,15 +126,15 @@ header#hero {
 }
 
 .glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 var(--clr-blue);
+    left: 4px;
+    text-shadow: -3px 0 var(--clr-details);
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch-anim 5s infinite linear alternate-reverse;
 }
 
 .glitch::after {
-    left: -2px;
-    text-shadow: 2px 0 var(--clr-primary);
+    left: -4px;
+    text-shadow: 3px 0 var(--clr-primary);
     clip: rect(100px, 450px, 120px, 0);
     animation: glitch-anim 5s infinite linear alternate-reverse;
 }
@@ -123,8 +153,100 @@ header#hero {
     100% { clip: rect(35px, 9999px, 40px, 0); }
 }
 
+.intro-status {
+    width: fit-content;
+    margin: 20px auto 0;
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ff99bb;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.status-lines {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.status-tag {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--clr-details);
+    color: #000;
+}
+
+.percent { color: var(--clr-details); }
+
 /* ========================================================= */
-/* NAVIGATION & STRUCTURE                                   */
+/* Integrated Image Overlays (Section and Card-Level)       */
+/* ========================================================= */
+
+/* About Section Blend - Dark Wedding Dress with flowers in corner */
+.blend-wedding-dress-black-left {
+    padding-left: 300px;
+}
+.blend-wedding-dress-black-left::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 300px; height: 100%;
+    background-image: url('image_10.png?index=5'); /* Black Wedding Dress */
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    mix-blend-mode: screen;
+}
+
+/* Connection Cards Blends */
+.integrated-decor-flower-white {
+    position: relative;
+}
+.integrated-decor-flower-white::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px; width: 100px; height: 100px;
+    background-image: url('image_10.png?index=3'); /* Light Wedding Dress Flowers */
+    background-size: contain;
+    opacity: 0.2;
+    mix-blend-mode: screen;
+}
+
+.integrated-decor-silhouette::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -30px; width: 150px; height: 150px;
+    background-image: url('image_10.png?index=4'); /* DITF Silhouette */
+    background-size: contain;
+    opacity: 0.1;
+    mix-blend-mode: soft-light;
+}
+
+/* Interests Section Blend - Zero Two & Hiro Lying Down on the bottom right */
+#interests.section {
+    position: relative;
+    padding-bottom: 150px;
+}
+.blend-zero-two-hiro-lying-right::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: 0; width: 50%; height: 150%;
+    background-image: url('image_10.png?index=1'); /* Zero Two & Hiro Lying */
+    background-size: contain;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    opacity: 0.08;
+    mix-blend-mode: screen;
+    z-index: -1;
+}
+
+/* ========================================================= */
+/* OTHER SECTIONS                                            */
 /* ========================================================= */
 nav {
     position: sticky;
@@ -167,51 +289,20 @@ main {
     padding: 120px 0;
 }
 
-/* ========================================================= */
-/* SECTION 1: THE PILOT                                     */
-/* ========================================================= */
-#the-pilot {
-    display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 3rem;
-    align-items: start;
+.bio-text p {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #ff99bb;
 }
 
-.profile-pic {
-    width: 100%;
-    border-radius: 50%;
-    border: 5px solid var(--clr-primary);
-    box-shadow: 0 0 30px rgba(255, 51, 102, 0.6);
-    background: var(--clr-bg);
-    margin-bottom: 1.5rem;
-}
-
-.role-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-.role-details h3 {
-    color: var(--clr-blue);
-    margin-bottom: 0.5rem;
-}
-
-.wide {
-    grid-column: span 2;
-}
-
-/* ========================================================= */
-/* SECTION 2: THE CONNECTION                                */
-/* ========================================================= */
 .connection-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
 
 .dynamic-widget {
-    min-height: 250px;
+    min-height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -219,46 +310,20 @@ main {
     color: #888;
 }
 
-/* ========================================================= */
-/* SECTION 3: THE HANGAR                                    */
-/* ========================================================= */
-.gallery-grid {
+.cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 400px;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
 }
 
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    border: 2px solid rgba(255, 51, 102, 0.3);
-    transition: transform 0.5s, box-shadow 0.5s;
+.card h3 {
+    color: var(--clr-details);
+    margin-bottom: 10px;
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.gallery-item:hover {
-    box-shadow: 0 0 25px rgba(255, 51, 102, 0.5);
-    transform: translateY(-5px);
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-/* ========================================================= */
-/* FOOTER                                                   */
-/* ========================================================= */
 footer {
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 20px;
     background: #0a0a0f;
     color: var(--clr-primary);
     font-style: italic;
