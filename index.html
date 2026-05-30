@@ -1,104 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pilot 002 | Access Granted</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pilot 002 | Cybernetic Profile</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="page-noise"></div>
+    <div class="ambient ambient-1"></div>
+    <div class="ambient ambient-2"></div>
 
-    <header id="hero">
+    <header id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-vignette"></div>
+
         <div class="hero-content">
-            <h1 class="glowing-title">HELLO, DARLING.</h1>
-            <div class="intro-status cyber-glass">
-                <p class="subtitle">Connection established... Sincronizando constantes vitales...</p>
-                <div class="status-metrics">
-                    <span>CODING.SYS <strong class="pink-text">98%</strong></span>
-                    <span>GAMING.LOG <strong class="pink-text">95%</strong></span>
-                    <span>TRADING.MKT <strong class="pink-text">91%</strong></span>
+            <p class="eyebrow">002 // CYBERNETIC PROFILE</p>
+            <h1 class="glitch title" data-text="HELLO, DARLING.">HELLO, DARLING.</h1>
+            <p class="subtitle">
+                Establishing connection... Pilot 002 online.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#the-pilot" class="hero-btn primary">Enter Profile</a>
+                <a href="#the-hangar" class="hero-btn secondary">View Arts</a>
+            </div>
+
+            <div class="hero-meta">
+                <div class="meta-chip">
+                    <span class="meta-label">Status</span>
+                    <span class="meta-value online">Active</span>
+                </div>
+                <div class="meta-chip">
+                    <span class="meta-label">Signal</span>
+                    <span class="meta-value">Stable</span>
+                </div>
+                <div class="meta-chip">
+                    <span class="meta-label">Frame</span>
+                    <span class="meta-value">Zero Two</span>
                 </div>
             </div>
         </div>
-        <div class="hero-fade"></div>
+
+        <aside class="hero-card glass-card">
+            <span class="card-kicker">// LIVE MEMORY</span>
+            <h2>Soft glow, sharp edge.</h2>
+            <p>
+                A dark interface with floating art, subtle neon, and cleaner sections so the background
+                feels alive instead of isolated.
+            </p>
+        </aside>
     </header>
 
-    <nav>
+    <nav class="top-nav">
         <ul>
-            <li><a href="#about-me">The Pilot</a></li>
-            <li><a href="#live-line">Live Status</a></li>
-            <li><a href="#interests">Interests</a></li>
+            <li><a href="#the-pilot">The Pilot</a></li>
+            <li><a href="#the-connection">Connection Line</a></li>
+            <li><a href="#the-hangar">The Hangar</a></li>
         </ul>
     </nav>
 
     <main>
-        <section id="about-me" class="section-wrapper">
-            <div class="decor-image decor-scholar"></div>
-            
-            <div class="content-container">
-                <h2 class="section-title">STATUS: CORE PILOT</h2>
-                <div class="cyber-glass text-box">
-                    <p>Immersed in the digital streams of code and electronics. Analytical mind, high-risk operational profile.</p>
-                    <p>Dedicated Engineering student focusing on C++ array streams and RTL logic architectures.</p>
+        <section id="the-pilot" class="section">
+            <div class="section-heading">
+                <p class="section-tag">002 // Profile</p>
+                <h2 class="section-title">The Pilot</h2>
+                <p class="section-lead">
+                    A cleaner landing area with sharper hierarchy and more breathing room.
+                </p>
+            </div>
+
+            <div class="pilot-layout">
+                <article class="profile-panel glass-card reveal">
+                    <div class="profile-topline">
+                        <span class="card-kicker">// STATUS: ACTIVE PILOT</span>
+                        <span class="pill live">ONLINE</span>
+                    </div>
+
+                    <img src="Hiro.jpg" alt="Profile picture" class="profile-pic">
+
+                    <p class="profile-text">
+                        Immersed in engineering, systems, and high-pressure environments.
+                        Analytical mind, precise execution, and a strong appetite for risk/reward.
+                    </p>
+                </article>
+
+                <div class="pilot-grid">
+                    <article class="info-card glass-card reveal">
+                        <h3>// Engineering</h3>
+                        <p>
+                            Digital electronics, RTL design, and C++ systems architecture with a clean logic flow.
+                        </p>
+                    </article>
+
+                    <article class="info-card glass-card reveal">
+                        <h3>// Gaming</h3>
+                        <p>
+                            Competitive and strategy-focused: Apex Legends, League of Legends, and tactical play.
+                        </p>
+                    </article>
+
+                    <article class="info-card glass-card wide reveal">
+                        <h3>// Day Trader</h3>
+                        <p>
+                            Market volatility specialist. Focused on asymmetric opportunities, discipline, and execution.
+                            <span class="quote">“Don’t fear death. Fear that your life ends before you accomplish your goals.”</span>
+                        </p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="live-line" class="section-wrapper">
-            <div class="decor-image decor-novia"></div>
+        <section id="the-connection" class="section">
+            <div class="section-heading">
+                <p class="section-tag">002 // Network</p>
+                <h2 class="section-title">Connection Line</h2>
+                <p class="section-lead">
+                    Renamed, cleaner, and with a softer visual hierarchy for the live widgets.
+                </p>
+            </div>
 
-            <div class="content-container">
-                <h2 class="section-title center-text">// THE LIVE LINE //</h2>
-                <div class="status-grid">
-                    
-                    <div class="cyber-glass widget-card">
-                        <h3><span class="icon">🎵</span> Spotify Sync</h3>
-                        <div id="spotify-widget-content" class="widget-inner">
-                            <p class="loading-text">Initializing audio stream...</p>
+            <div class="connection-grid">
+                <article class="status-card glass-card reveal">
+                    <div class="card-header">
+                        <div>
+                            <span class="card-kicker green">// Soundtrack Pulse</span>
+                            <h3 class="widget-title">Spotify Sync</h3>
                         </div>
+                        <span class="pill music">AUDIO</span>
                     </div>
+                    <div class="widget-content" id="spotify-widget-content">
+                        <p class="widget-placeholder">Initializing audio scan...</p>
+                    </div>
+                </article>
 
-                    <div class="cyber-glass widget-card">
-                        <h3><span class="icon">⚡</span> Pilot Status</h3>
-                        <div id="discord-widget-content" class="widget-inner">
-                            <p class="loading-text">Synchronizing data...</p>
+                <article class="status-card glass-card reveal">
+                    <div class="card-header">
+                        <div>
+                            <span class="card-kicker blue">// Signal Line</span>
+                            <h3 class="widget-title">Pilot Status</h3>
                         </div>
+                        <span class="pill signal">STATUS</span>
                     </div>
-
-                </div>
+                    <div class="widget-content status-widget" id="discord-widget-content">
+                        <p class="widget-placeholder">Synchronizing vital signs...</p>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <section id="interests" class="section-wrapper">
-            <div class="decor-image decor-wife"></div>
+        <section id="the-hangar" class="section">
+            <div class="section-heading">
+                <p class="section-tag">002 // Archive</p>
+                <h2 class="section-title">The Hangar (Arts)</h2>
+                <p class="section-lead">
+                    The images are distributed as part of the layout, so the section feels woven into the page.
+                </p>
+            </div>
 
-            <div class="content-container">
-                <h2 class="section-title">PILOT PROFICIENCIES</h2>
-                <div class="cards-grid">
-                    <div class="cyber-glass info-card">
-                        <h3 class="pink-text">Code & Hardware</h3>
-                        <p>Development in C++ (arrays & iostream), Digital Electronics RTL simulations, and PC system performance architecture.</p>
-                    </div>
-                    <div class="cyber-glass info-card">
-                        <h3 class="pink-text">Gaming Combat</h3>
-                        <p>Competitive & Strategy: Active combatant in Apex Legends, League of Legends, and Honkai: Star Rail.</p>
-                    </div>
-                    <div class="cyber-glass info-card">
-                        <h3 class="pink-text">Day Trader</h3>
-                        <p>Focused on capital growth and market volatility analysis. Exploring algorithmic trading bots in MQL5.</p>
-                    </div>
-                    <div class="cyber-glass info-card">
-                        <h3 class="pink-text">Discord Admin</h3>
-                        <p>Managing the core line connect server. Architect of custom economies, advanced bots, and linear gradient roles.</p>
-                    </div>
-                </div>
+            <div class="gallery-grid">
+                <figure class="gallery-item span-2 reveal">
+                    <img src="ScholarZero.jpg" alt="Zero Two art 1">
+                    <figcaption>Soft gaze // crimson glow</figcaption>
+                </figure>
+
+                <figure class="gallery-item reveal">
+                    <img src="Stunning%2002%20Darling%20in%20the%20Franxx%20Wallpaper%20Collection.jpg" alt="Zero Two art 2">
+                    <figcaption>Warm tones // intimate frame</figcaption>
+                </figure>
+
+                <figure class="gallery-item dark reveal">
+                    <img src="Zeroblack.jpg" alt="Zero Two art 3">
+                    <figcaption>Minimal line // neon contrast</figcaption>
+                </figure>
+
+                <figure class="gallery-item tall reveal">
+                    <img src="Zeronovia.jpg" alt="Zero Two art 4">
+                    <figcaption>Light bloom // elegant silhouette</figcaption>
+                </figure>
+
+                <figure class="gallery-item wide reveal">
+                    <img src="Zerowall.jpg" alt="Zero Two art 5">
+                    <figcaption>Large frame // ambient composition</figcaption>
+                </figure>
+
+                <figure class="gallery-item reveal">
+                    <img src="zerowife.jpg" alt="Zero Two art 6">
+                    <figcaption>Monochrome // bridal contrast</figcaption>
+                </figure>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p class="footer-quote">"Found you, my darling." - Zero Two</p>
+    <footer class="footer">
+        <p>"Found you, my darling." - Zero Two</p>
     </footer>
 
     <script src="script.js"></script>
