@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pilot 002</title>
+    <title>Pilot 002 // Terminal</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
@@ -11,153 +11,62 @@
     <div class="page-grain"></div>
     <div class="ambient ambient-left"></div>
     <div class="ambient ambient-right"></div>
-    <div class="scroll-progress" id="scroll-progress"></div>
 
-    <header class="hero" id="hero">
-        <div class="hero-media">
-            <img
-                src="darling_in_the_franxx_zero_two_sitting_near_field_seeing_lighting_on_the_sky_with_background_of_dark_sky_clouds_and_stars_during_night_time_hd_anime.jpg"
-                alt="Background"
-                class="hero-bg"
-            />
-            <div class="hero-vignette"></div>
-            <div class="hero-shine"></div>
-        </div>
+    <main class="bento-container">
+        
+        <article class="bento-card profile-card">
+            <div class="card-glow"></div>
+            <div class="profile-header">
+                <span class="pill live">ONLINE</span>
+                <span class="card-kicker">002 // SYSTEM</span>
+            </div>
+            <img src="Hiro.jpg" alt="Profile picture" class="avatar" />
+            <h1 class="title">Hello, Darling.</h1>
+            <p class="subtitle">Pilot 002 terminal active. Immersed in high-pressure environments, systems architecture, and precise execution.</p>
+        </article>
 
-        <div class="hero-inner">
-            <div class="hero-copy">
-                <p class="eyebrow">002 // PROFILE</p>
-                <h1 class="hero-title">HELLO, DARLING.</h1>
-                <p class="hero-subtitle">Pilot 002 online.</p>
+        <article class="bento-card text-card accent-pink">
+            <div class="card-icon">⚡</div>
+            <h2>// Logic & Systems</h2>
+            <p>Focusing on structural flow. Building foundations with C++, arrays, iostream, and digital electronics.</p>
+        </article>
 
-                <div class="hero-actions">
-                    <a href="#the-pilot" class="btn btn-primary">Open profile</a>
-                    <a href="#the-connection" class="btn btn-secondary">Signal</a>
+        <article class="bento-card text-card accent-gold">
+            <div class="card-icon">📈</div>
+            <h2>// Market Analysis</h2>
+            <p>Algorithmic execution and pattern recognition. Navigating volatility through MetaTrader 5 and MQL5 logic.</p>
+        </article>
+
+        <article class="bento-card text-card accent-blue">
+            <div class="card-icon">🎮</div>
+            <h2>// Tactical Ops</h2>
+            <p>Competitive deployment. Maintaining high-level engagement across Apex Legends and League of Legends.</p>
+        </article>
+
+        <article class="bento-card signal-card">
+            <div class="card-header-line">
+                <span class="card-kicker blue">// SIGNAL LINE</span>
+            </div>
+            <div id="discord-widget-content" class="widget-container">
+                <div class="widget-placeholder">
+                    <div class="loader"></div>
+                    <p>Synchronizing vital signs...</p>
                 </div>
             </div>
-        </div>
+        </article>
 
-        <a href="#the-pilot" class="hero-scroll">
-            <span></span>
-            <span>Scroll</span>
-        </a>
-    </header>
-
-    <nav class="top-nav">
-        <div class="nav-inner">
-            <a href="#hero" class="nav-brand">002</a>
-            <div class="nav-links">
-                <a href="#the-pilot">Profile</a>
-                <a href="#the-connection">Connection</a>
+        <article class="bento-card signal-card wide-card">
+            <div class="card-header-line">
+                <span class="card-kicker green">// SOUNDTRACK PULSE</span>
             </div>
-        </div>
-    </nav>
-
-    <main>
-        <section id="the-pilot" class="section section-surface">
-            <div class="section-art art-left" aria-hidden="true">
-                <img src="ScholarZero.jpg" alt="">
-            </div>
-            <div class="section-art art-right" aria-hidden="true">
-                <img src="Zeroblack.jpg" alt="">
-            </div>
-            <div class="section-art art-bottom" aria-hidden="true">
-                <img src="Zeronovia.jpg" alt="">
-            </div>
-
-            <div class="section-heading">
-                <p class="section-tag">002 // PROFILE</p>
-                <h2>The Pilot</h2>
-            </div>
-
-            <div class="pilot-layout">
-                <article class="profile-card glass-card reveal">
-                    <div class="card-header-line">
-                        <span class="card-kicker">// ACTIVE PILOT</span>
-                        <span class="pill live">ONLINE</span>
-                    </div>
-
-                    <div class="profile-shell">
-                        <div class="profile-glow"></div>
-                        <img src="Hiro.jpg" alt="Profile picture" class="profile-pic" />
-                    </div>
-
-                    <p class="profile-text">
-                        Immersed in engineering, systems, and high-pressure environments.
-                        Analytical mind, precise execution, and a strong appetite for risk and reward.
-                    </p>
-                </article>
-
-                <div class="pilot-grid">
-                    <article class="info-card glass-card reveal accent-pink">
-                        <div class="accent-line"></div>
-                        <h3>// Engineering</h3>
-                        <p>Digital electronics, RTL design, and C++ systems architecture with structured logic and clean flow.</p>
-                    </article>
-
-                    <article class="info-card glass-card reveal accent-blue">
-                        <div class="accent-line"></div>
-                        <h3>// Gaming</h3>
-                        <p>Competitive and tactical play across Apex Legends, League of Legends, and strategy-heavy sessions.</p>
-                    </article>
-
-                    <article class="info-card glass-card wide reveal accent-gold">
-                        <div class="accent-line"></div>
-                        <h3>// Day Trader</h3>
-                        <p>
-                            Market volatility specialist focused on discipline, timing, and asymmetric opportunity.
-                            <span class="quote">“Don’t fear death. Fear that your life ends before you accomplish your goals.”</span>
-                        </p>
-                    </article>
+            <div id="spotify-widget-content" class="widget-container">
+                <div class="widget-placeholder">
+                    <div class="loader"></div>
+                    <p>Waiting for audio signal...</p>
                 </div>
             </div>
-        </section>
+        </article>
 
-        <section id="the-connection" class="section connection-section">
-            <div class="section-heading">
-                <p class="section-tag">002 // SIGNAL</p>
-                <h2>Connection Line</h2>
-            </div>
-
-            <div class="signal-grid">
-                <article class="signal-card glass-card reveal">
-                    <div class="card-header-line">
-                        <div>
-                            <span class="card-kicker green">// SOUNDTRACK PULSE</span>
-                            <h3>Spotify Sync</h3>
-                        </div>
-                        <span class="pill music">AUDIO</span>
-                    </div>
-                    <div class="widget" id="spotify-widget-content">
-                        <div class="widget-placeholder">
-                            <div class="widget-icon">♪</div>
-                            <div>
-                                <p class="widget-placeholder-title">Waiting for audio signal</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="signal-card glass-card reveal">
-                    <div class="card-header-line">
-                        <div>
-                            <span class="card-kicker blue">// SIGNAL LINE</span>
-                            <h3>Pilot Status</h3>
-                        </div>
-                        <span class="pill signal">STATUS</span>
-                    </div>
-                    <div class="widget" id="discord-widget-content">
-                        <div class="widget-placeholder">
-                            <div class="widget-icon">◌</div>
-                            <div>
-                                <p class="widget-placeholder-title">Synchronizing vital signs</p>
-                                <p class="widget-placeholder-subtitle">Live activity will appear here when detected.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
     </main>
 
     <footer class="footer">
