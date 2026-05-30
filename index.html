@@ -3,191 +3,245 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pilot 002 | Cybernetic Profile</title>
+    <title>Pilot 002 | Zero Frame</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="page-noise"></div>
-    <div class="ambient ambient-1"></div>
-    <div class="ambient ambient-2"></div>
+    <div class="page-grain"></div>
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
+    <div class="scroll-progress" id="scroll-progress"></div>
 
-    <header id="hero" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-vignette"></div>
-
-        <div class="hero-content">
-            <p class="eyebrow">002 // CYBERNETIC PROFILE</p>
-            <h1 class="glitch title" data-text="HELLO, DARLING.">HELLO, DARLING.</h1>
-            <p class="subtitle">
-                Establishing connection... Pilot 002 online.
-            </p>
-
-            <div class="hero-actions">
-                <a href="#the-pilot" class="hero-btn primary">Enter Profile</a>
-                <a href="#the-hangar" class="hero-btn secondary">View Arts</a>
-            </div>
-
-            <div class="hero-meta">
-                <div class="meta-chip">
-                    <span class="meta-label">Status</span>
-                    <span class="meta-value online">Active</span>
-                </div>
-                <div class="meta-chip">
-                    <span class="meta-label">Signal</span>
-                    <span class="meta-value">Stable</span>
-                </div>
-                <div class="meta-chip">
-                    <span class="meta-label">Frame</span>
-                    <span class="meta-value">Zero Two</span>
-                </div>
-            </div>
+    <header class="hero" id="hero">
+        <div class="hero-media">
+            <img
+                src="darling_in_the_franxx_zero_two_sitting_near_field_seeing_lighting_on_the_sky_with_background_of_dark_sky_clouds_and_stars_during_night_time_hd_anime.jpg"
+                alt="Background art"
+                class="hero-bg"
+            />
+            <div class="hero-vignette"></div>
+            <div class="hero-sheen"></div>
         </div>
 
-        <aside class="hero-card glass-card">
-            <span class="card-kicker">// LIVE MEMORY</span>
-            <h2>Soft glow, sharp edge.</h2>
-            <p>
-                A dark interface with floating art, subtle neon, and cleaner sections so the background
-                feels alive instead of isolated.
-            </p>
-        </aside>
+        <div class="hero-art hero-art-a">
+            <img src="ScholarZero.jpg" alt="" aria-hidden="true">
+        </div>
+        <div class="hero-art hero-art-b">
+            <img src="Zeroblack.jpg" alt="" aria-hidden="true">
+        </div>
+        <div class="hero-art hero-art-c">
+            <img src="Zeronovia.jpg" alt="" aria-hidden="true">
+        </div>
+
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <p class="eyebrow">002 // CYBER PILOT INTERFACE</p>
+                <h1 class="hero-title">HELLO, DARLING.</h1>
+                <p class="hero-subtitle">
+                    A premium zero-two inspired interface where the art lives inside the layout,
+                    not on top of it.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#the-pilot" class="btn btn-primary">Open Profile</a>
+                    <a href="#the-connection" class="btn btn-secondary">View Signal</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-chip">
+                        <span class="stat-label">Status</span>
+                        <span class="stat-value online">Active</span>
+                    </div>
+                    <div class="stat-chip">
+                        <span class="stat-label">Style</span>
+                        <span class="stat-value">Neo Elegance</span>
+                    </div>
+                    <div class="stat-chip">
+                        <span class="stat-label">Frame</span>
+                        <span class="stat-value">Zero Two</span>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="hero-note glass-card">
+                <div class="note-top">
+                    <span class="card-kicker">// FIELD NOTE</span>
+                    <span class="mini-pulse"></span>
+                </div>
+                <h2>Soft glow. Sharp contrast. No wasted space.</h2>
+                <p>
+                    The background is kept visible, while floating art and translucent panels give the page
+                    a more crafted, premium feel.
+                </p>
+                <div class="note-strip">
+                    <span></span><span></span><span></span>
+                </div>
+            </aside>
+        </div>
+
+        <a href="#the-pilot" class="hero-scroll">
+            <span></span>
+            <span>Scroll</span>
+        </a>
     </header>
 
     <nav class="top-nav">
-        <ul>
-            <li><a href="#the-pilot">The Pilot</a></li>
-            <li><a href="#the-connection">Connection Line</a></li>
-            <li><a href="#the-hangar">The Hangar</a></li>
-        </ul>
+        <div class="nav-inner">
+            <a href="#hero" class="nav-brand">002</a>
+            <div class="nav-links">
+                <a href="#the-pilot">Pilot</a>
+                <a href="#the-connection">Connection</a>
+            </div>
+        </div>
     </nav>
 
     <main>
         <section id="the-pilot" class="section">
             <div class="section-heading">
-                <p class="section-tag">002 // Profile</p>
-                <h2 class="section-title">The Pilot</h2>
-                <p class="section-lead">
-                    A cleaner landing area with sharper hierarchy and more breathing room.
+                <p class="section-tag">002 // PROFILE</p>
+                <h2>The Pilot</h2>
+                <p>
+                    Cleaner structure, stronger hierarchy, and a softer luxury look so every piece feels placed on purpose.
                 </p>
             </div>
 
             <div class="pilot-layout">
-                <article class="profile-panel glass-card reveal">
-                    <div class="profile-topline">
-                        <span class="card-kicker">// STATUS: ACTIVE PILOT</span>
+                <article class="profile-card glass-card reveal">
+                    <div class="card-header-line">
+                        <span class="card-kicker">// ACTIVE PILOT</span>
                         <span class="pill live">ONLINE</span>
                     </div>
 
-                    <img src="Hiro.jpg" alt="Profile picture" class="profile-pic">
+                    <div class="profile-shell">
+                        <div class="profile-glow"></div>
+                        <img src="Hiro.jpg" alt="Profile picture" class="profile-pic" />
+                    </div>
 
                     <p class="profile-text">
                         Immersed in engineering, systems, and high-pressure environments.
-                        Analytical mind, precise execution, and a strong appetite for risk/reward.
+                        Analytical mind, precise execution, and a strong appetite for risk and reward.
                     </p>
                 </article>
 
                 <div class="pilot-grid">
-                    <article class="info-card glass-card reveal">
+                    <article class="info-card glass-card reveal accent-pink">
+                        <div class="accent-line"></div>
                         <h3>// Engineering</h3>
                         <p>
-                            Digital electronics, RTL design, and C++ systems architecture with a clean logic flow.
+                            Digital electronics, RTL design, and C++ systems architecture with structured logic and clean flow.
                         </p>
                     </article>
 
-                    <article class="info-card glass-card reveal">
+                    <article class="info-card glass-card reveal accent-blue">
+                        <div class="accent-line"></div>
                         <h3>// Gaming</h3>
                         <p>
-                            Competitive and strategy-focused: Apex Legends, League of Legends, and tactical play.
+                            Competitive and tactical play across Apex Legends, League of Legends, and strategy-heavy sessions.
                         </p>
                     </article>
 
-                    <article class="info-card glass-card wide reveal">
+                    <article class="info-card glass-card wide reveal accent-gold">
+                        <div class="accent-line"></div>
                         <h3>// Day Trader</h3>
                         <p>
-                            Market volatility specialist. Focused on asymmetric opportunities, discipline, and execution.
-                            <span class="quote">“Don’t fear death. Fear that your life ends before you accomplish your goals.”</span>
+                            Market volatility specialist focused on discipline, timing, and asymmetric opportunity.
+                            <span class="quote">
+                                “Don’t fear death. Fear that your life ends before you accomplish your goals.”
+                            </span>
                         </p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="the-connection" class="section">
+        <section id="the-connection" class="section connection-section">
             <div class="section-heading">
-                <p class="section-tag">002 // Network</p>
-                <h2 class="section-title">Connection Line</h2>
-                <p class="section-lead">
-                    Renamed, cleaner, and with a softer visual hierarchy for the live widgets.
+                <p class="section-tag">002 // NETWORK</p>
+                <h2>Connection Line</h2>
+                <p>
+                    A cleaner live area with premium fallback states so Spotify and status always look intentional.
                 </p>
             </div>
 
-            <div class="connection-grid">
-                <article class="status-card glass-card reveal">
-                    <div class="card-header">
+            <div class="signal-grid">
+                <article class="signal-card glass-card reveal">
+                    <div class="card-header-line">
                         <div>
-                            <span class="card-kicker green">// Soundtrack Pulse</span>
-                            <h3 class="widget-title">Spotify Sync</h3>
+                            <span class="card-kicker green">// SOUNDTRACK PULSE</span>
+                            <h3>Spotify Sync</h3>
                         </div>
                         <span class="pill music">AUDIO</span>
                     </div>
-                    <div class="widget-content" id="spotify-widget-content">
-                        <p class="widget-placeholder">Initializing audio scan...</p>
+                    <div class="widget" id="spotify-widget-content">
+                        <div class="widget-placeholder">
+                            <div class="widget-icon">♪</div>
+                            <div>
+                                <p class="widget-placeholder-title">Waiting for audio signal</p>
+                                <p class="widget-placeholder-subtitle">This card will animate when Spotify is active.</p>
+                            </div>
+                        </div>
                     </div>
                 </article>
 
-                <article class="status-card glass-card reveal">
-                    <div class="card-header">
+                <article class="signal-card glass-card reveal">
+                    <div class="card-header-line">
                         <div>
-                            <span class="card-kicker blue">// Signal Line</span>
-                            <h3 class="widget-title">Pilot Status</h3>
+                            <span class="card-kicker blue">// SIGNAL LINE</span>
+                            <h3>Pilot Status</h3>
                         </div>
                         <span class="pill signal">STATUS</span>
                     </div>
-                    <div class="widget-content status-widget" id="discord-widget-content">
-                        <p class="widget-placeholder">Synchronizing vital signs...</p>
+                    <div class="widget" id="discord-widget-content">
+                        <div class="widget-placeholder">
+                            <div class="widget-icon">◌</div>
+                            <div>
+                                <p class="widget-placeholder-title">Synchronizing vital signs</p>
+                                <p class="widget-placeholder-subtitle">Live activity will appear here when detected.</p>
+                            </div>
+                        </div>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section id="the-hangar" class="section">
+        <section id="the-hangar" class="section hangar-section">
             <div class="section-heading">
-                <p class="section-tag">002 // Archive</p>
-                <h2 class="section-title">The Hangar (Arts)</h2>
-                <p class="section-lead">
-                    The images are distributed as part of the layout, so the section feels woven into the page.
+                <p class="section-tag">002 // HANGAR</p>
+                <h2>Art Fragments</h2>
+                <p>
+                    The art is no longer isolated. It is blended into the page as floating fragments, panels, and atmosphere.
                 </p>
             </div>
 
-            <div class="gallery-grid">
-                <figure class="gallery-item span-2 reveal">
-                    <img src="ScholarZero.jpg" alt="Zero Two art 1">
-                    <figcaption>Soft gaze // crimson glow</figcaption>
+            <div class="hangar-grid">
+                <figure class="hangar-art large reveal">
+                    <img src="ScholarZero.jpg" alt="Zero Two artwork 1">
+                    <figcaption>Soft gaze // crimson silence</figcaption>
                 </figure>
 
-                <figure class="gallery-item reveal">
-                    <img src="Stunning%2002%20Darling%20in%20the%20Franxx%20Wallpaper%20Collection.jpg" alt="Zero Two art 2">
-                    <figcaption>Warm tones // intimate frame</figcaption>
+                <figure class="hangar-art reveal">
+                    <img src="Stunning%2002%20Darling%20in%20the%20Franxx%20Wallpaper%20Collection.jpg" alt="Zero Two artwork 2">
+                    <figcaption>Warm bloom // intimate frame</figcaption>
                 </figure>
 
-                <figure class="gallery-item dark reveal">
-                    <img src="Zeroblack.jpg" alt="Zero Two art 3">
-                    <figcaption>Minimal line // neon contrast</figcaption>
+                <figure class="hangar-art dark reveal">
+                    <img src="Zeroblack.jpg" alt="Zero Two artwork 3">
+                    <figcaption>Linework // neon contrast</figcaption>
                 </figure>
 
-                <figure class="gallery-item tall reveal">
-                    <img src="Zeronovia.jpg" alt="Zero Two art 4">
-                    <figcaption>Light bloom // elegant silhouette</figcaption>
+                <figure class="hangar-art tall reveal">
+                    <img src="Zeronovia.jpg" alt="Zero Two artwork 4">
+                    <figcaption>Light veil // elegant silhouette</figcaption>
                 </figure>
 
-                <figure class="gallery-item wide reveal">
-                    <img src="Zerowall.jpg" alt="Zero Two art 5">
-                    <figcaption>Large frame // ambient composition</figcaption>
+                <figure class="hangar-art wide reveal">
+                    <img src="Zerowall.jpg" alt="Zero Two artwork 5">
+                    <figcaption>Large composition // ambient glow</figcaption>
                 </figure>
 
-                <figure class="gallery-item reveal">
-                    <img src="zerowife.jpg" alt="Zero Two art 6">
+                <figure class="hangar-art reveal">
+                    <img src="zerowife.jpg" alt="Zero Two artwork 6">
                     <figcaption>Monochrome // bridal contrast</figcaption>
                 </figure>
             </div>
