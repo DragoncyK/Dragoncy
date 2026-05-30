@@ -1,73 +1,152 @@
+:root {
+    /* Paleta de Colores: Rosa Zero Two, Rojo Profundo, Ciber-Azul, Negro y Blanco */
+    --clr-bg: #0c0c10;
+    --clr-primary: #ff3366; /* Rosa Neón Principal */
+    --clr-accent: #ff0055;  /* Rojo más intenso */
+    --clr-blue: #00eaff;     /* Azul de detalles tecnológicos */
+    --clr-glass: rgba(26, 15, 20, 0.7);
+    --clr-text: #ffffff;
+    --font-main: 'Montserrat', sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-main);
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #0d0d12;
-    color: #ffffff;
-    /* You can add a link to a Zero Two background image here */
-    background-image: url('https://i.pinimg.com/originals/bc/26/5d/bc265d9c2cb29cf652b0cf200e0b3c43.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* Darkens the background so the text is perfectly readable */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(13, 13, 18, 0.85);
-    z-index: -1;
+/* Efecto de Brillo de Neón para Texto */
+.glowing-text {
+    color: var(--clr-primary);
+    text-shadow: 0 0 10px var(--clr-primary), 0 0 25px var(--clr-accent);
 }
 
-header {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+/* El Componente de Ciber-Tarjeta para Info */
+.cyber-card {
+    background: var(--clr-glass);
+    border: 1px solid var(--clr-primary);
+    border-radius: 10px;
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Anime/tech style effect for the title */
-.glitch {
-    font-size: 5rem;
+.cyber-card:hover {
+    box-shadow: 0 0 30px rgba(255, 51, 102, 0.5);
+    transform: translateY(-8px);
+}
+
+/* Títulos de Sección Estilizados */
+h2.section-title {
+    color: var(--clr-primary);
+    font-size: 3rem;
     font-weight: 900;
-    color: #ff3366;
+    margin-bottom: 2rem;
+    border-left: 10px solid var(--clr-primary);
+    padding-left: 1rem;
     text-transform: uppercase;
-    text-shadow: 0 0 20px #ff3366, 0 0 40px #ff0055;
-    letter-spacing: 5px;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: #ff99bb;
     letter-spacing: 2px;
 }
 
+/* ========================================================= */
+/* SECCIÓN: HÉROE (El Gran Fondo de Estrellas)               */
+/* ========================================================= */
+header#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* ESTO CARGA TU IMAGEN DE ESTRELLAS */
+    background-image: url('./images/hero-background.png');
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(13, 13, 18, 0.1) 0%, rgba(13, 13, 18, 1) 95%);
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+/* Efecto de Glitch para el Título */
+.glitch {
+    font-size: 6.5rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    position: relative;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--clr-blue);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: 2px 0 var(--clr-primary);
+    clip: rect(100px, 450px, 120px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(15px, 9999px, 16px, 0); }
+    10% { clip: rect(85px, 9999px, 86px, 0); }
+    20% { clip: rect(3px, 9999px, 10px, 0); }
+    30% { clip: rect(61px, 9999px, 70px, 0); }
+    40% { clip: rect(15px, 9999px, 20px, 0); }
+    50% { clip: rect(98px, 9999px, 105px, 0); }
+    60% { clip: rect(25px, 9999px, 30px, 0); }
+    70% { clip: rect(77px, 9999px, 85px, 0); }
+    80% { clip: rect(15px, 9999px, 25px, 0); }
+    90% { clip: rect(90px, 9999px, 95px, 0); }
+    100% { clip: rect(35px, 9999px, 40px, 0); }
+}
+
+/* ========================================================= */
+/* NAVEGACIÓN Y ESTRUCTURA                                  */
+/* ========================================================= */
 nav {
     position: sticky;
     top: 0;
-    background: rgba(26, 15, 20, 0.95);
-    padding: 15px 0;
-    border-bottom: 2px solid #ff3366;
+    background: rgba(13, 13, 18, 0.95);
+    padding: 1.2rem 0;
+    border-bottom: 2px solid var(--clr-primary);
     z-index: 100;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 3.5rem;
 }
 
 nav a {
@@ -75,70 +154,120 @@ nav a {
     text-decoration: none;
     font-weight: 700;
     text-transform: uppercase;
+    font-size: 1.1rem;
     transition: color 0.3s, text-shadow 0.3s;
 }
 
 nav a:hover {
-    color: #ff3366;
-    text-shadow: 0 0 10px #ff3366;
+    color: var(--clr-primary);
+    text-shadow: 0 0 10px var(--clr-primary);
+}
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 .section {
-    padding: 80px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+    padding: 120px 0;
 }
 
-h2 {
-    color: #ff3366;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    border-left: 5px solid #ff3366;
-    padding-left: 15px;
+/* ========================================================= */
+/* SECCIÓN 1: EL PILOTO (Perfil y Descripción)              */
+/* ========================================================= */
+#the-pilot {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 3rem;
+    align-items: start;
 }
 
-.content-box {
-    background: rgba(255, 51, 102, 0.05);
-    border: 1px solid rgba(255, 51, 102, 0.2);
-    padding: 30px;
-    border-radius: 10px;
-    line-height: 1.8;
-    font-size: 1.1rem;
+.profile-pic {
+    width: 100%;
+    border-radius: 50%;
+    border: 5px solid var(--clr-primary);
+    box-shadow: 0 0 30px rgba(255, 51, 102, 0.6);
+    background: var(--clr-bg);
 }
 
-.content-box p {
-    margin-bottom: 15px;
+.role-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
-.cards-container {
+.role-details h3 {
+    color: var(--clr-blue);
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================================= */
+/* SECCIÓN 2: LA CONEXIÓN (Widgets Dinámicos)               */
+/* ========================================================= */
+.connection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.dynamic-widget {
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: #888;
+    text-align: center;
+}
+
+.dynamic-widget img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ========================================================= */
+/* SECCIÓN 3: EL HANGAR (Galería de Imágenes)              */
+/* ========================================================= */
+.gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-auto-rows: 300px;
+    gap: 1.5rem;
 }
 
-.card {
-    background: rgba(20, 20, 25, 0.8);
-    border: 1px solid #ff3366;
-    padding: 25px;
+.gallery-item {
+    position: relative;
+    overflow: hidden;
     border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid rgba(255, 51, 102, 0.3);
+    transition: transform 0.5s, box-shadow 0.5s;
 }
 
-.card:hover {
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover {
+    box-shadow: 0 0 25px rgba(255, 51, 102, 0.5);
     transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
 }
 
-.card h3 {
-    color: #ff99bb;
-    margin-bottom: 15px;
+.gallery-item:hover img {
+    transform: scale(1.1) rotate(1deg);
 }
 
+/* ========================================================= */
+/* FOOTER Y FINAL                                          */
+/* ========================================================= */
 footer {
     text-align: center;
-    padding: 40px 20px;
+    padding: 80px 20px;
     background: #0a0a0f;
-    color: #ff3366;
+    color: var(--clr-primary);
     font-style: italic;
-    border-top: 1px solid #ff3366;
+    border-top: 1px solid var(--clr-primary);
 }
