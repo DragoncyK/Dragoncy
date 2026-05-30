@@ -3,100 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pilot 002 | Access Granted | Cyber Interface</title>
+    <title>Pilot 002 | Access Granted</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="blend-overlay-neon-outline"></div>
 
     <header id="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-blend-portrait-right"></div>
         <div class="hero-content">
-            <h1 class="glitch glowing-text" data-text="HELLO, DARLING.">HELLO, DARLING.</h1>
-            <div class="intro-status cyber-card">
-                <p class="subtitle orbiting-text">Connection established... Sincronizando constantes vitales...</p>
-                <div class="status-lines">
-                    <span class="status-tag online">ONLINE</span>
-                    <span class="status-text">PILOT 002 [Megu] Core Accessed.</span>
-                </div>
+            <h1 class="glowing-title">HELLO, DARLING.</h1>
+            <div class="intro-status cyber-glass">
+                <p class="subtitle">Connection established... Sincronizando constantes vitales...</p>
                 <div class="status-metrics">
-                    <div class="metric">CODING.SYS <span class="percent">98%</span></div>
-                    <div class="metric">GAMING.LOG <span class="percent">95%</span></div>
-                    <div class="metric">TRADING.MKT <span class="percent">91%</span></div>
-                    <div class="metric">DISCORD.AD <span class="percent">100%</span></div>
+                    <span>CODING.SYS <strong class="pink-text">98%</strong></span>
+                    <span>GAMING.LOG <strong class="pink-text">95%</strong></span>
+                    <span>TRADING.MKT <strong class="pink-text">91%</strong></span>
                 </div>
             </div>
         </div>
+        <div class="hero-fade"></div>
     </header>
 
     <nav>
         <ul>
             <li><a href="#about-me">The Pilot</a></li>
-            <li><a href="#the-connection">Live Status</a></li>
+            <li><a href="#live-line">Live Status</a></li>
             <li><a href="#interests">Interests</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <main>
-        <section id="about-me" class="section">
-            <div class="bio-content cyber-card blend-wedding-dress-black-left">
-                <h2>STATUS: CORE PILOT</h2>
-                <div class="bio-text">
+        <section id="about-me" class="section-wrapper">
+            <div class="decor-image decor-scholar"></div>
+            
+            <div class="content-container">
+                <h2 class="section-title">STATUS: CORE PILOT</h2>
+                <div class="cyber-glass text-box">
                     <p>Immersed in the digital streams of code and electronics. Analytical mind, high-risk operational profile.</p>
                     <p>Dedicated Engineering student focusing on C++ array streams and RTL logic architectures.</p>
                 </div>
             </div>
         </section>
 
-        <section id="the-connection" class="section blend-ditf-silhouette-center">
-            <h2 class="section-title glowing-text orbiting-text">// THE LIVE LINE //</h2>
-            <div class="connection-grid">
-                
-                <div class="cyber-card spotify integrated-decor-flower-white">
-                    <h3>Spotify Sync</h3>
-                    <div class="dynamic-widget" id="spotify-widget-content">
-                        <p>Initializing audio stream...</p>
-                    </div>
-                </div>
+        <section id="live-line" class="section-wrapper">
+            <div class="decor-image decor-novia"></div>
 
-                <div class="cyber-card discord integrated-decor-silhouette">
-                    <h3>Pilot Status</h3>
-                    <div class="dynamic-widget" id="discord-widget-content">
-                        <p>Synchronizing operational data...</p>
+            <div class="content-container">
+                <h2 class="section-title center-text">// THE LIVE LINE //</h2>
+                <div class="status-grid">
+                    
+                    <div class="cyber-glass widget-card">
+                        <h3><span class="icon">🎵</span> Spotify Sync</h3>
+                        <div id="spotify-widget-content" class="widget-inner">
+                            <p class="loading-text">Initializing audio stream...</p>
+                        </div>
                     </div>
+
+                    <div class="cyber-glass widget-card">
+                        <h3><span class="icon">⚡</span> Pilot Status</h3>
+                        <div id="discord-widget-content" class="widget-inner">
+                            <p class="loading-text">Synchronizing data...</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <section id="interests" class="section blend-zero-two-hiro-lying-right">
-            <h2>PILOT OPERATIONAL PROFICIENCIES</h2>
-            <div class="cards-container">
-                <div class="card cyber-card glowing-text">
-                    <h3>Code & Hardware</h3>
-                    <p>Development in C++ (specifically specialized array streams and iostream optimizations), Digital Electronics RTL simulations, and PC system performance architecture.</p>
-                </div>
-                <div class="card cyber-card">
-                    <h3>Gaming Combat</h3>
-                    <p>Competitive & Strategy: Active combatant in Apex Legends, League of Legends, and Honkai: Star Rail composition strategist.</p>
-                </div>
-                <div class="card cyber-card glowing-text">
-                    <h3>Day Trader</h3>
-                    <p>Focused on capital growth and market volatility analysis. Exploring algorithmic trading bots in MQL5 for maximum reward.</p>
-                </div>
-                <div class="card cyber-card">
-                    <h3>Discord Admin</h3>
-                    <p>Managing the core line connect server. Architect of custom economies, advanced bots, and linear gradient roles.</p>
+        <section id="interests" class="section-wrapper">
+            <div class="decor-image decor-wife"></div>
+
+            <div class="content-container">
+                <h2 class="section-title">PILOT PROFICIENCIES</h2>
+                <div class="cards-grid">
+                    <div class="cyber-glass info-card">
+                        <h3 class="pink-text">Code & Hardware</h3>
+                        <p>Development in C++ (arrays & iostream), Digital Electronics RTL simulations, and PC system performance architecture.</p>
+                    </div>
+                    <div class="cyber-glass info-card">
+                        <h3 class="pink-text">Gaming Combat</h3>
+                        <p>Competitive & Strategy: Active combatant in Apex Legends, League of Legends, and Honkai: Star Rail.</p>
+                    </div>
+                    <div class="cyber-glass info-card">
+                        <h3 class="pink-text">Day Trader</h3>
+                        <p>Focused on capital growth and market volatility analysis. Exploring algorithmic trading bots in MQL5.</p>
+                    </div>
+                    <div class="cyber-glass info-card">
+                        <h3 class="pink-text">Discord Admin</h3>
+                        <p>Managing the core line connect server. Architect of custom economies, advanced bots, and linear gradient roles.</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="blend-wedding-dress-light-left">
-        <p>"Found you, my darling." - Zero Two</p>
+    <footer>
+        <p class="footer-quote">"Found you, my darling." - Zero Two</p>
     </footer>
 
     <script src="script.js"></script>
