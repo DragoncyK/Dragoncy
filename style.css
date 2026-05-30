@@ -1,9 +1,8 @@
 :root {
-    /* Paleta de Colores: Rosa Zero Two, Rojo Profundo, Ciber-Azul, Negro y Blanco */
     --clr-bg: #0c0c10;
-    --clr-primary: #ff3366; /* Rosa Neón Principal */
-    --clr-accent: #ff0055;  /* Rojo más intenso */
-    --clr-blue: #00eaff;     /* Azul de detalles tecnológicos */
+    --clr-primary: #ff3366; 
+    --clr-accent: #ff0055;  
+    --clr-blue: #00eaff;     
     --clr-glass: rgba(26, 15, 20, 0.7);
     --clr-text: #ffffff;
     --font-main: 'Montserrat', sans-serif;
@@ -24,13 +23,11 @@ body {
     line-height: 1.6;
 }
 
-/* Efecto de Brillo de Neón para Texto */
 .glowing-text {
     color: var(--clr-primary);
     text-shadow: 0 0 10px var(--clr-primary), 0 0 25px var(--clr-accent);
 }
 
-/* El Componente de Ciber-Tarjeta para Info */
 .cyber-card {
     background: var(--clr-glass);
     border: 1px solid var(--clr-primary);
@@ -47,7 +44,6 @@ body {
     transform: translateY(-8px);
 }
 
-/* Títulos de Sección Estilizados */
 h2.section-title {
     color: var(--clr-primary);
     font-size: 3rem;
@@ -60,7 +56,7 @@ h2.section-title {
 }
 
 /* ========================================================= */
-/* SECCIÓN: HÉROE (El Gran Fondo de Estrellas)               */
+/* SECTION: HERO                                            */
 /* ========================================================= */
 header#hero {
     height: 100vh;
@@ -72,7 +68,6 @@ header#hero {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* ESTO CARGA TU IMAGEN DE ESTRELLAS */
     background-image: url('./images/hero-background.png');
 }
 
@@ -87,7 +82,6 @@ header#hero {
     z-index: 2;
 }
 
-/* Efecto de Glitch para el Título */
 .glitch {
     font-size: 6.5rem;
     font-weight: 900;
@@ -130,7 +124,7 @@ header#hero {
 }
 
 /* ========================================================= */
-/* NAVEGACIÓN Y ESTRUCTURA                                  */
+/* NAVIGATION & STRUCTURE                                   */
 /* ========================================================= */
 nav {
     position: sticky;
@@ -174,7 +168,7 @@ main {
 }
 
 /* ========================================================= */
-/* SECCIÓN 1: EL PILOTO (Perfil y Descripción)              */
+/* SECTION 1: THE PILOT                                     */
 /* ========================================================= */
 #the-pilot {
     display: grid;
@@ -189,6 +183,7 @@ main {
     border: 5px solid var(--clr-primary);
     box-shadow: 0 0 30px rgba(255, 51, 102, 0.6);
     background: var(--clr-bg);
+    margin-bottom: 1.5rem;
 }
 
 .role-details {
@@ -202,8 +197,12 @@ main {
     margin-bottom: 0.5rem;
 }
 
+.wide {
+    grid-column: span 2;
+}
+
 /* ========================================================= */
-/* SECCIÓN 2: LA CONEXIÓN (Widgets Dinámicos)               */
+/* SECTION 2: THE CONNECTION                                */
 /* ========================================================= */
 .connection-grid {
     display: grid;
@@ -227,7 +226,7 @@ main {
 }
 
 /* ========================================================= */
-/* SECCIÓN 3: EL HANGAR (Galería de Imágenes)              */
+/* SECTION 3: THE HANGAR                                    */
 /* ========================================================= */
 .gallery-grid {
     display: grid;
@@ -261,7 +260,7 @@ main {
 }
 
 /* ========================================================= */
-/* FOOTER Y FINAL                                          */
+/* FOOTER                                                   */
 /* ========================================================= */
 footer {
     text-align: center;
