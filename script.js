@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const root = document.documentElement;
     const revealElements = document.querySelectorAll(".reveal");
     const navLinks = document.querySelectorAll(".nav-links a");
     const progress = document.getElementById("scroll-progress");
@@ -44,9 +45,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const ratio = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
         progress.style.width = `${Math.min(100, Math.max(0, ratio))}%`;
+        root.style.setProperty("--scroll", `${ratio.toFixed(2)}`);
+    }
+
+    function updatePointer(e) {
+        const x = ((e.clientX / window.innerWidth) - 0.5) * 20;
+        const y = ((e.clientY / window.innerHeight) - 0.5) * 20;
+        root.style.setProperty("--mx", x.toFixed(2));
+        root.style.setProperty("--my", y.toFixed(2));
     }
 
     window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("pointermove", updatePointer, { passive: true });
     updateProgress();
 
     const lanyardAPI = "https://api.lanyard.rest/v1/users/738501782413639790";
