@@ -1,58 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const root = document.documentElement;
-    const revealElements = document.querySelectorAll(".reveal");
-    const navLinks = document.querySelectorAll(".nav-links a");
-    const progress = document.getElementById("scroll-progress");
-
-    navLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const target = document.querySelector(link.getAttribute("href"));
-            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-    });
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
-
-    revealElements.forEach((el) => revealObserver.observe(el));
-
-    const sections = document.querySelectorAll("section[id]");
-    const activeObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            navLinks.forEach((a) => a.classList.remove("active"));
-            const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-            if (active) active.classList.add("active");
-        });
-    }, { threshold: 0.45 });
-
-    sections.forEach((section) => activeObserver.observe(section));
-
-    function updateProgress() {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const ratio = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        progress.style.width = `${Math.min(100, Math.max(0, ratio))}%`;
-        root.style.setProperty("--scroll", `${ratio.toFixed(2)}`);
-    }
-
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    window.addEventListener("pointermove", (e) => {
-        const x = ((e.clientX / window.innerWidth) - 0.5) * 16;
-        const y = ((e.clientY / window.innerHeight) - 0.5) * 16;
-        root.style.setProperty("--mx", x.toFixed(2));
-        root.style.setProperty("--my", y.toFixed(2));
-    }, { passive: true });
-
-    updateProgress();
-
+    // ID de Lanyard (Mantengo el que pusiste)
     const lanyardAPI = "https://api.lanyard.rest/v1/users/738501782413639790";
     const spotifyWidget = document.getElementById("spotify-widget-content");
     const discordWidget = document.getElementById("discord-widget-content");
@@ -81,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!data) throw new Error("No Lanyard data");
 
+            // --- DISCORD STATUS ---
             const discordStatus = data.discord_status || "offline";
             const currentColor = statusColors[discordStatus] || statusColors.offline;
             const activities = Array.isArray(data.activities) ? data.activities : [];
@@ -91,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="status-dot" style="background:${currentColor}; color:${currentColor};"></div>
                     <div class="status-copy">
                         <div class="status-name" style="color:${currentColor};">${escapeHTML(discordStatus.toUpperCase())}</div>
-                        <div class="status-detail">Connection ${discordStatus === "offline" ? "interrupted" : "stable"}.</div>
+                        <div class="status-detail">Network connection stable.</div>
                     </div>
                 </div>
             `;
@@ -99,23 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
             if (gameActivity) {
                 discordHTML += `
                     <div class="activity-box">
-                        <div class="activity-label">Executing process</div>
                         <div class="activity-name">${escapeHTML(gameActivity.name)}</div>
                         ${gameActivity.details ? `<div class="activity-text">${escapeHTML(gameActivity.details)}</div>` : ""}
                         ${gameActivity.state ? `<div class="activity-text">${escapeHTML(gameActivity.state)}</div>` : ""}
-                    </div>
-                `;
-            } else {
-                discordHTML += `
-                    <div class="activity-box">
-                        <div class="activity-label">Executing process</div>
-                        <div class="activity-text">No active high-load simulation detected.</div>
                     </div>
                 `;
             }
 
             discordWidget.innerHTML = discordHTML;
 
+            // --- SPOTIFY STATUS ---
             if (data.spotify) {
                 const track = data.spotify.song || "Unknown track";
                 const artist = data.spotify.artist || "Unknown artist";
@@ -125,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="spotify-layout">
                         <img src="${escapeHTML(art)}" alt="Album art" class="spotify-art">
                         <div class="track-copy">
-                            <div class="track-badge">Live Stream</div>
                             <div class="track-title">${escapeHTML(track)}</div>
                             <div class="track-artist">by ${escapeHTML(artist)}</div>
                             <div class="track-bar"><span></span></div>
@@ -134,42 +74,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
             } else {
                 spotifyWidget.innerHTML = `
-                    <div class="widget-placeholder">
-                        <div class="widget-icon">♪</div>
-                        <div>
-                            <p class="widget-placeholder-title">No audio detected right now</p>
+                    <div class="status-layout">
+                        <div class="status-dot" style="background:#7b8497; color:#7b8497;"></div>
+                        <div class="status-copy">
+                            <div class="status-name" style="color:#7b8497;">SILENT</div>
+                            <div class="status-detail">No audio stream detected.</div>
                         </div>
                     </div>
                 `;
             }
         } catch (error) {
-            console.error("Error connecting to Lanyard:", error);
-
-            if (discordWidget) {
-                discordWidget.innerHTML = `
-                    <div class="widget-placeholder">
-                        <div class="widget-icon">◌</div>
-                        <div>
-                            <p class="widget-placeholder-title">Signal unavailable</p>
-                            <p class="widget-placeholder-subtitle">Live status could not be fetched just now.</p>
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (spotifyWidget) {
-                spotifyWidget.innerHTML = `
-                    <div class="widget-placeholder">
-                        <div class="widget-icon">♪</div>
-                        <div>
-                            <p class="widget-placeholder-title">Spotify unavailable</p>
-                        </div>
-                    </div>
-                `;
-            }
+            console.error("Lanyard Connection Error:", error);
+            // Fallback silencioso en caso de error
         }
     }
 
+    // Llamada inicial y bucle de actualización cada 5 segundos
     updateLanyardStatus();
     setInterval(updateLanyardStatus, 5000);
 });
