@@ -68,7 +68,7 @@ header#hero {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('./images/hero-background.png');
+    background-image: url('darling_in_the_franxx_zero_two_sitting_near_field_seeing_lighting_on_the_sky_with_background_of_dark_sky_clouds_and_stars_during_night_time_hd_anime.jpg');
 }
 
 .hero-overlay {
@@ -217,12 +217,6 @@ main {
     align-items: center;
     font-size: 1rem;
     color: #888;
-    text-align: center;
-}
-
-.dynamic-widget img {
-    max-width: 100%;
-    height: auto;
 }
 
 /* ========================================================= */
@@ -231,7 +225,7 @@ main {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 300px;
+    grid-auto-rows: 400px;
     gap: 1.5rem;
 }
 
@@ -256,7 +250,7 @@ main {
 }
 
 .gallery-item:hover img {
-    transform: scale(1.1) rotate(1deg);
+    transform: scale(1.05);
 }
 
 /* ========================================================= */
