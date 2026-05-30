@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0d0d12;
+    color: #ffffff;
+    /* You can add a link to a Zero Two background image here */
+    background-image: url('https://i.pinimg.com/originals/bc/26/5d/bc265d9c2cb29cf652b0cf200e0b3c43.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Darkens the background so the text is perfectly readable */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 18, 0.85);
+    z-index: -1;
+}
+
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Anime/tech style effect for the title */
+.glitch {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #ff3366;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px #ff3366, 0 0 40px #ff0055;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ff99bb;
+    letter-spacing: 2px;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    background: rgba(26, 15, 20, 0.95);
+    padding: 15px 0;
+    border-bottom: 2px solid #ff3366;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav a:hover {
+    color: #ff3366;
+    text-shadow: 0 0 10px #ff3366;
+}
+
+.section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #ff3366;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    border-left: 5px solid #ff3366;
+    padding-left: 15px;
+}
+
+.content-box {
+    background: rgba(255, 51, 102, 0.05);
+    border: 1px solid rgba(255, 51, 102, 0.2);
+    padding: 30px;
+    border-radius: 10px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.content-box p {
+    margin-bottom: 15px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: rgba(20, 20, 25, 0.8);
+    border: 1px solid #ff3366;
+    padding: 25px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+}
+
+.card h3 {
+    color: #ff99bb;
+    margin-bottom: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #0a0a0f;
+    color: #ff3366;
+    font-style: italic;
+    border-top: 1px solid #ff3366;
+}
