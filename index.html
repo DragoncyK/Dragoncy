@@ -1,59 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile | Darling in the Franxx</title>
+    <title>Piloto 002 | Perfil Cinerético Digital</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for a more anime/tech style -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="overlay"></div>
 
-    <header id="home">
-        <h1 class="glitch" data-text="HELLO, DARLING.">HELLO, DARLING.</h1>
-        <p class="subtitle">Welcome to my personal space on the web.</p>
+    <header id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="glitch glowing-text" data-text="HOLA, DARLING.">HOLA, DARLING.</h1>
+            <p class="subtitle orbiting-text">Estableciendo Conexión... Piloto 002 Online.</p>
+        </div>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#about-me">About Me</a></li>
-            <li><a href="#interests">Interests</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#the-pilot">El Piloto</a></li>
+            <li><a href="#the-connection">Conexión Live</a></li>
+            <li><a href="#the-hangar">El Hangar</a></li>
         </ul>
     </nav>
 
     <main>
-        <section id="about-me" class="section">
-            <h2>002 // ABOUT ME</h2>
-            <div class="content-box">
-                <p>I am an 18-year-old student immersed in the programming world, with a special focus on <strong>C++ (specifically arrays and iostream) and digital electronics</strong>. I love understanding how things work, from the most basic logic circuits to code execution.</p>
-                <p>I consider myself an analytical person with very defined tastes. When I'm not studying, analyzing PC hardware performance, or optimizing BIOS configurations, I'm enjoying my free time in the digital world.</p>
+        <section id="the-pilot" class="section">
+            <div class="profile-area cyber-card">
+                <h2>// ESTADO: PILOTO ACTIVO</h2>
+                <img src="./images/profile.png" alt="Mi Foto de Perfil" class="profile-pic">
+                <p>Inmerso en los flujos de la Ingeniería y la Tecnología. Mente analítica, perfil operativo de alto riesgo.</p>
+            </div>
+            
+            <div class="role-details">
+                <div class="cyber-card">
+                    <h3>// Ingeniería</h3>
+                    <p>Sistemas Digitales, Arquitectura RTL, Código C++ (especializado en arrays y flujos).</p>
+                </div>
+                <div class="cyber-card">
+                    <h3>// Gaming</h3>
+                    <p>Competitivo y Estratégico: Jugador activo de Apex y LoL. Táctico de HSR.</p>
+                </div>
+                <div class="cyber-card wide glowing-text">
+                    <h3>// Day Trader</h3>
+                    <p>Especialista en Volatilidad del Mercado. Enfocado puramente en el crecimiento de capital. "No temas a la muerte. Teme que tu vida termine antes de que hayas cumplido tus objetivos."</p>
+                </div>
             </div>
         </section>
 
-        <section id="interests" class="section">
-            <h2>002 // MY INTERESTS</h2>
-            <div class="cards-container">
-                <div class="card">
-                    <h3>💻 Code & Hardware</h3>
-                    <p>C++ development, digital electronics projects (like RTL architecture and 24-hour clocks in DEEDS), and PC system optimization.</p>
+        <section id="the-connection" class="section">
+            <h2 class="section-title glowing-text">002 // Línea de Conexión</h2>
+            <div class="connection-grid">
+                
+                <div class="cyber-card spotify">
+                    <h3>🎧 Spotify Dinámico</h3>
+                    <div class="dynamic-widget">
+                        <p>Requiere configuración de API para mostrar tu canción actual.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>🎮 Gaming</h3>
-                    <p>Competitive and strategic: Active player of Apex Legends, League of Legends, and team composition strategist in Honkai: Star Rail.</p>
+
+                <div class="cyber-card discord">
+                    <h3>Actividad Live / Estado</h3>
+                    <div class="dynamic-widget">
+                        <p>Awaiting Lanyard API connection to detect live game or activity.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>📈 Finance & Admin</h3>
-                    <p>Exploring algorithmic trading (MQL5), prop trading firms, and advanced Discord server administration featuring custom bots, economies, and linear gradient roles.</p>
+
+                <div class="cyber-card discord-server">
+                    <h3>Comandante del Servidor</h3>
+                    <p>Manejando la línea de conexión del servidor (Roles avanzados, economía, roles de gradiente).</p>
+                    <div class="dynamic-widget server-status">
+                        <img src="https://via.placeholder.com/200x50.png?text=SERVER_STATUS_IMAGE" alt="Estado del Servidor" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="the-hangar" class="section">
+            <h2 class="section-title">002 // El Hangar (Arts)</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="./images/gallery-1.jpg" alt="Zero Two Art 1">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="./images/gallery-2.jpg" alt="Zero Two Art 2">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="./images/gallery-3.jpg" alt="Zero Two Art 3">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="./images/gallery-4.jpg" alt="Zero Two Art 4">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="./images/gallery-5.jpg" alt="Zero Two Art 5">
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>"If you don't have anywhere to go, then come with me." - Zero Two</p>
+        <p>"Te encontré, mi darling." - Zero Two</p>
+        <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 10px;">Cyber Pilot Interface v2.0</p>
     </footer>
 
     <script src="script.js"></script>
