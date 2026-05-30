@@ -118,9 +118,9 @@ main,
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 18%;
-    filter: saturate(1.05) contrast(1.04) brightness(0.72);
-    transform: scale(1.03);
+    object-position: center 28%;
+    filter: saturate(1.04) contrast(1.02) brightness(0.74);
+    transform: scale(0.94);
 }
 
 .hero-vignette {
@@ -148,8 +148,8 @@ main,
     border-radius: 24px;
     pointer-events: none;
     mix-blend-mode: screen;
-    opacity: 0.10;
-    filter: blur(1px) saturate(1.03) contrast(1.02);
+    opacity: 0.08;
+    filter: blur(4px) saturate(1.02) contrast(1.01);
 }
 
 .bg-layer img,
@@ -168,28 +168,34 @@ main,
     background: linear-gradient(180deg, rgba(7, 7, 11, 0.02), rgba(7, 7, 11, 0.84));
 }
 
+.bg-layer {
+    animation: drift 26s ease-in-out infinite;
+}
+
 .bg-layer-a {
-    top: 14%;
-    right: 4%;
-    width: 220px;
-    height: 280px;
-    transform: rotate(8deg);
+    top: 12%;
+    right: 2%;
+    width: 200px;
+    height: 260px;
+    transform: rotate(7deg);
 }
 
 .bg-layer-b {
-    left: 4%;
-    bottom: 14%;
-    width: 200px;
-    height: 250px;
-    transform: rotate(-8deg);
+    left: 2%;
+    bottom: 10%;
+    width: 185px;
+    height: 235px;
+    transform: rotate(-7deg);
+    animation-delay: 4s;
 }
 
 .bg-layer-c {
-    right: 16%;
-    bottom: 18%;
-    width: 160px;
-    height: 220px;
+    right: 12%;
+    bottom: 16%;
+    width: 145px;
+    height: 200px;
     transform: rotate(-4deg);
+    animation-delay: 8s;
 }
 
 .hero-inner {
@@ -222,7 +228,6 @@ main,
     letter-spacing: 0.05em;
     font-weight: 900;
     max-width: 10ch;
-    text-wrap: balance;
     color: white;
     text-shadow:
         0 0 16px rgba(255, 60, 127, 0.32),
@@ -374,16 +379,18 @@ main {
     top: 10%;
     width: min(30vw, 340px);
     height: min(38vw, 440px);
+    animation: drift 30s ease-in-out infinite;
 }
 
 .veil-left {
-    left: -6%;
+    left: -8%;
     transform: rotate(-8deg);
 }
 
 .veil-right {
-    right: -6%;
+    right: -8%;
     transform: rotate(8deg);
+    animation-delay: 6s;
 }
 
 .section-heading {
@@ -764,6 +771,11 @@ main {
     0% { transform: translate(-50%, 0); opacity: 0.7; }
     50% { transform: translate(-50%, 8px); opacity: 1; }
     100% { transform: translate(-50%, 0); opacity: 0.7; }
+}
+
+@keyframes drift {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg)); }
+    50% { transform: translate3d(0, -10px, 0) rotate(var(--rot, 0deg)); }
 }
 
 @media (max-width: 1100px) {
