@@ -1,71 +1,157 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // API de Lanyard
+    const revealElements = document.querySelectorAll(".reveal");
+    const navLinks = document.querySelectorAll(".top-nav a");
+
+    // Smooth scroll for nav
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute("href"));
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        });
+    });
+
+    // Reveal animation
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.14,
+        rootMargin: "0px 0px -60px 0px"
+    });
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+
+    // Active nav link
+    const sections = document.querySelectorAll("section[id]");
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            navLinks.forEach((a) => a.classList.remove("active"));
+            const active = document.querySelector(`.top-nav a[href="#${entry.target.id}"]`);
+            if (active) active.classList.add("active");
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    // Lanyard API integration
     const lanyardAPI = "https://api.lanyard.rest/v1/users/738501782413639790";
+    const spotifyWidget = document.getElementById("spotify-widget-content");
+    const discordWidget = document.getElementById("discord-widget-content");
+
+    const statusColors = {
+        online: "#31d07d",
+        idle: "#f7b955",
+        dnd: "#ff4d6d",
+        offline: "#7b8497"
+    };
+
+    function escapeHTML(str = "") {
+        return String(str)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
 
     async function updateLanyardStatus() {
         try {
-            const response = await fetch(lanyardAPI);
+            const response = await fetch(lanyardAPI, { cache: "no-store" });
             const json = await response.json();
-            const data = json.data;
-            
-            // 1. ACTUALIZAR DISCORD STATUS
-            const discordWidget = document.getElementById('discord-widget-content');
-            const statusColors = { online: '#43b581', idle: '#faa61a', dnd: '#f04747', offline: '#747f8d' };
-            const currentColor = statusColors[data.discord_status];
-            
-            // HTML para Discord (Más limpio y elegante)
-            let htmlDiscord = `
-                <div style="width: 100%;">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                        <div style="width: 16px; height: 16px; border-radius: 50%; background-color: ${currentColor}; box-shadow: 0 0 12px ${currentColor};"></div>
-                        <span style="font-weight: bold; color: #fff; font-size: 1.2rem; text-transform: uppercase;">${data.discord_status}</span>
+            const data = json?.data;
+
+            if (!data) {
+                throw new Error("No data received");
+            }
+
+            // Discord / pilot status
+            const discordStatus = data.discord_status || "offline";
+            const currentColor = statusColors[discordStatus] || statusColors.offline;
+            const activities = Array.isArray(data.activities) ? data.activities : [];
+            const gameActivity = activities.find((act) => act.id !== "spotify:1" && act.name);
+
+            let discordHTML = `
+                <div class="status-layout">
+                    <div class="status-dot" style="color:${currentColor}; background:${currentColor};"></div>
+                    <div class="status-copy">
+                        <div class="status-name" style="color:${currentColor};">${escapeHTML(discordStatus.toUpperCase())}</div>
+                        <div class="status-detail">Connection ${discordStatus === "offline" ? "interrupted" : "stable"}.</div>
                     </div>
+                </div>
             `;
 
-            // Detectar juegos/actividades
-            if (data.activities && data.activities.length > 0) {
-                const gameActivity = data.activities.find(act => act.id !== "spotify:1");
-                if (gameActivity) {
-                    htmlDiscord += `
-                        <div style="background: rgba(0,0,0,0.5); padding: 15px; border-left: 4px solid var(--neon-pink); border-radius: 6px;">
-                            <p style="color: #aaa; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px;">Currently Executing</p>
-                            <p style="color: #fff; font-weight: bold; font-size: 1.1rem;">${gameActivity.name}</p>
-                            ${gameActivity.details ? `<p style="font-size: 0.9rem; color: #ddd; margin-top: 4px;">${gameActivity.details}</p>` : ''}
-                            ${gameActivity.state ? `<p style="font-size: 0.9rem; color: #ddd;">${gameActivity.state}</p>` : ''}
-                        </div>
-                    `;
-                } else {
-                    htmlDiscord += `<p style="color: #888; font-style: italic;">No operational simulations detected.</p>`;
-                }
+            if (gameActivity) {
+                discordHTML += `
+                    <div class="activity-box">
+                        <div class="activity-label">Executing process</div>
+                        <div class="activity-name">${escapeHTML(gameActivity.name)}</div>
+                        ${gameActivity.details ? `<div class="activity-text">${escapeHTML(gameActivity.details)}</div>` : ""}
+                        ${gameActivity.state ? `<div class="activity-text">${escapeHTML(gameActivity.state)}</div>` : ""}
+                    </div>
+                `;
             } else {
-                 htmlDiscord += `<p style="color: #888; font-style: italic;">Interface idle.</p>`;
+                discordHTML += `
+                    <div class="activity-box">
+                        <div class="activity-label">Executing process</div>
+                        <div class="activity-text">No active high-load simulation detected.</div>
+                    </div>
+                `;
             }
-            htmlDiscord += `</div>`;
-            discordWidget.innerHTML = htmlDiscord;
 
-            // 2. ACTUALIZAR SPOTIFY STATUS
-            const spotifyWidget = document.getElementById('spotify-widget-content');
+            discordWidget.innerHTML = discordHTML;
+
+            // Spotify
             if (data.spotify) {
+                const track = data.spotify.song || "Unknown track";
+                const artist = data.spotify.artist || "Unknown artist";
+                const art = data.spotify.album_art_url || "";
+
                 spotifyWidget.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 20px; width: 100%;">
-                        <img src="${data.spotify.album_art_url}" style="width: 90px; height: 90px; border-radius: 8px; box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4);">
-                        <div style="overflow: hidden;">
-                            <p style="color: #1db954; font-weight: 900; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 5px;">▶ NOW PLAYING</p>
-                            <p style="color: #fff; font-weight: bold; font-size: 1.2rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">${data.spotify.song}</p>
-                            <p style="font-size: 0.95rem; color: #ccc; margin-top: 3px;">${data.spotify.artist}</p>
+                    <div class="spotify-layout">
+                        <img src="${escapeHTML(art)}" alt="Album art" class="spotify-art">
+                        <div class="track-copy">
+                            <div class="track-badge">Live Stream</div>
+                            <div class="track-title">${escapeHTML(track)}</div>
+                            <div class="track-artist">by ${escapeHTML(artist)}</div>
+                            <div class="track-bar"><span></span></div>
                         </div>
                     </div>
                 `;
             } else {
                 spotifyWidget.innerHTML = `
-                    <div style="text-align: left; width: 100%;">
-                        <p style="color: #888; font-style: italic;">Audio channel offline.</p>
+                    <div style="text-align:left; width:100%;">
+                        <div class="widget-placeholder">No audio detected right now.</div>
+                    </div>
+                `;
+            }
+        } catch (error) {
+            console.error("Error connecting to Lanyard:", error);
+
+            if (discordWidget) {
+                discordWidget.innerHTML = `
+                    <div class="activity-box">
+                        <div class="activity-label">Signal</div>
+                        <div class="activity-text">Unable to fetch live status.</div>
                     </div>
                 `;
             }
 
-        } catch (error) {
-            console.error("Error API:", error);
+            if (spotifyWidget) {
+                spotifyWidget.innerHTML = `
+                    <div class="widget-placeholder">Unable to fetch Spotify status.</div>
+                `;
+            }
         }
     }
 
