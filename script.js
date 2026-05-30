@@ -48,15 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         root.style.setProperty("--scroll", `${ratio.toFixed(2)}`);
     }
 
-    function updatePointer(e) {
-        const x = ((e.clientX / window.innerWidth) - 0.5) * 20;
-        const y = ((e.clientY / window.innerHeight) - 0.5) * 20;
-        root.style.setProperty("--mx", x.toFixed(2));
-        root.style.setProperty("--my", y.toFixed(2));
-    }
-
     window.addEventListener("scroll", updateProgress, { passive: true });
-    window.addEventListener("pointermove", updatePointer, { passive: true });
     updateProgress();
 
     const lanyardAPI = "https://api.lanyard.rest/v1/users/738501782413639790";
