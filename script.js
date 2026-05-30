@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const revealElements = document.querySelectorAll(".reveal");
-    const navLinks = document.querySelectorAll(".top-nav a");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const progress = document.getElementById("scroll-progress");
 
-    // Smooth scroll for nav
     navLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Reveal animation
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -22,29 +21,34 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, {
-        threshold: 0.14,
+        threshold: 0.12,
         rootMargin: "0px 0px -60px 0px"
     });
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Active nav link
     const sections = document.querySelectorAll("section[id]");
-    const sectionObserver = new IntersectionObserver((entries) => {
+    const activeObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
-
             navLinks.forEach((a) => a.classList.remove("active"));
-            const active = document.querySelector(`.top-nav a[href="#${entry.target.id}"]`);
+            const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
             if (active) active.classList.add("active");
         });
-    }, {
-        threshold: 0.5
-    });
+    }, { threshold: 0.45 });
 
-    sections.forEach((section) => sectionObserver.observe(section));
+    sections.forEach((section) => activeObserver.observe(section));
 
-    // Lanyard API integration
+    function updateProgress() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progress.style.width = `${Math.min(100, Math.max(0, ratio))}%`;
+    }
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+
     const lanyardAPI = "https://api.lanyard.rest/v1/users/738501782413639790";
     const spotifyWidget = document.getElementById("spotify-widget-content");
     const discordWidget = document.getElementById("discord-widget-content");
@@ -71,11 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const json = await response.json();
             const data = json?.data;
 
-            if (!data) {
-                throw new Error("No data received");
-            }
+            if (!data) throw new Error("No Lanyard data");
 
-            // Discord / pilot status
             const discordStatus = data.discord_status || "offline";
             const currentColor = statusColors[discordStatus] || statusColors.offline;
             const activities = Array.isArray(data.activities) ? data.activities : [];
@@ -83,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let discordHTML = `
                 <div class="status-layout">
-                    <div class="status-dot" style="color:${currentColor}; background:${currentColor};"></div>
+                    <div class="status-dot" style="background:${currentColor}; color:${currentColor};"></div>
                     <div class="status-copy">
                         <div class="status-name" style="color:${currentColor};">${escapeHTML(discordStatus.toUpperCase())}</div>
                         <div class="status-detail">Connection ${discordStatus === "offline" ? "interrupted" : "stable"}.</div>
@@ -111,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             discordWidget.innerHTML = discordHTML;
 
-            // Spotify
             if (data.spotify) {
                 const track = data.spotify.song || "Unknown track";
                 const artist = data.spotify.artist || "Unknown artist";
@@ -130,8 +130,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
             } else {
                 spotifyWidget.innerHTML = `
-                    <div style="text-align:left; width:100%;">
-                        <div class="widget-placeholder">No audio detected right now.</div>
+                    <div class="widget-placeholder">
+                        <div class="widget-icon">♪</div>
+                        <div>
+                            <p class="widget-placeholder-title">No audio detected right now</p>
+                            <p class="widget-placeholder-subtitle">The panel is ready and will animate when Spotify goes live.</p>
+                        </div>
                     </div>
                 `;
             }
@@ -140,16 +144,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (discordWidget) {
                 discordWidget.innerHTML = `
-                    <div class="activity-box">
-                        <div class="activity-label">Signal</div>
-                        <div class="activity-text">Unable to fetch live status.</div>
+                    <div class="widget-placeholder">
+                        <div class="widget-icon">◌</div>
+                        <div>
+                            <p class="widget-placeholder-title">Signal unavailable</p>
+                            <p class="widget-placeholder-subtitle">Live status could not be fetched just now.</p>
+                        </div>
                     </div>
                 `;
             }
 
             if (spotifyWidget) {
                 spotifyWidget.innerHTML = `
-                    <div class="widget-placeholder">Unable to fetch Spotify status.</div>
+                    <div class="widget-placeholder">
+                        <div class="widget-icon">♪</div>
+                        <div>
+                            <p class="widget-placeholder-title">Spotify unavailable</p>
+                            <p class="widget-placeholder-subtitle">The widget will recover automatically when the connection returns.</p>
+                        </div>
+                    </div>
                 `;
             }
         }
