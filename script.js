@@ -124,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="orb orb-green"></div>
             <div class="widget-text">
               <p class="widget-title">No track playing</p>
-              <p class="widget-sub">Start a song and it will show here.</p>
             </div>
           </div>
         `;
