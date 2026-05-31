@@ -2,7 +2,6 @@
   --bg: #050509;
   --bg2: #0c0c12;
   --glass: rgba(12, 12, 18, 0.62);
-  --glass-strong: rgba(9, 9, 14, 0.8);
   --line: rgba(255, 74, 121, 0.35);
   --pink: #ff4a79;
   --pink2: #ff1f62;
@@ -110,16 +109,16 @@ main,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 22%;
-  transform: scale(1.08);
-  filter: saturate(1.06) contrast(1.04) brightness(0.76);
+  object-position: center 28%;
+  transform: scale(1.18);
+  filter: saturate(1.08) contrast(1.04) brightness(0.78);
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(5,5,9,0.08) 0%, rgba(5,5,9,0.46) 52%, rgba(5,5,9,0.92) 100%);
+    linear-gradient(180deg, rgba(5,5,9,0.06) 0%, rgba(5,5,9,0.40) 50%, rgba(5,5,9,0.90) 100%);
 }
 
 .hero-vignette {
@@ -405,54 +404,88 @@ main {
   letter-spacing: 0.12em;
 }
 
-/* Fondo integrado, no ocupa espacio */
-.profile-section::before,
-.profile-section::after,
-.signal-section::before,
-.signal-section::after {
+.bg-art {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.24;
+  filter: blur(0.8px) saturate(1.08) brightness(0.95) contrast(1.03);
+  mix-blend-mode: screen;
+  animation: driftSlow 22s ease-in-out infinite;
+}
+
+.bg-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-section::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  filter: blur(1px) saturate(1.08) brightness(0.9) contrast(1.02);
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255, 74, 121, 0.07), transparent 34%),
+    radial-gradient(circle at 80% 45%, rgba(138, 147, 255, 0.06), transparent 34%);
+}
+
+.art-left {
+  left: -8%;
+  top: 7%;
+  width: min(31vw, 410px);
+  height: min(60vw, 740px);
+  transform: rotate(-6deg);
+}
+
+.art-right {
+  right: -8%;
+  top: 5%;
+  width: min(31vw, 410px);
+  height: min(60vw, 740px);
+  transform: rotate(6deg);
+  animation-delay: 4s;
+}
+
+.art-bottom {
+  left: 50%;
+  bottom: -14%;
+  transform: translateX(-50%);
+  width: min(22vw, 300px);
+  height: min(32vw, 420px);
   opacity: 0.18;
-  mix-blend-mode: screen;
+  animation-delay: 8s;
 }
 
-.profile-section::before {
-  background-image: url("zerotwoleft.png");
-  background-size: min(30vw, 390px);
-  background-position: left 3vw center;
-  transform: translate3d(calc(var(--mx, 0px) * 0.12), calc(var(--my, 0px) * 0.08), 0) rotate(-6deg);
-  animation: driftLeft 28s ease-in-out infinite;
+.signal-left {
+  left: -10%;
+  top: 4%;
+  width: min(26vw, 330px);
+  height: min(52vw, 620px);
+  transform: rotate(-7deg);
+  opacity: 0.16;
 }
 
-.profile-section::after {
-  background-image: url("zerotworight.png");
-  background-size: min(30vw, 390px);
-  background-position: right 3vw center;
-  transform: translate3d(calc(var(--mx, 0px) * -0.12), calc(var(--my, 0px) * 0.08), 0) rotate(6deg);
-  animation: driftRight 30s ease-in-out infinite;
+.signal-right {
+  right: -10%;
+  top: 3%;
+  width: min(26vw, 330px);
+  height: min(52vw, 620px);
+  transform: rotate(7deg);
+  opacity: 0.16;
+  animation-delay: 5s;
 }
 
-.signal-section::before {
-  background-image: url("zerotwobottom.png");
-  background-size: min(24vw, 290px);
-  background-position: center bottom -2rem;
+.signal-bottom {
+  left: 50%;
+  bottom: -12%;
+  transform: translateX(-50%);
+  width: min(18vw, 250px);
+  height: min(28vw, 360px);
   opacity: 0.14;
-  animation: driftBottom 30s ease-in-out infinite;
-}
-
-.signal-section::after {
-  background-image: url("zerotwobottom.png");
-  background-size: min(18vw, 210px);
-  background-position: left 8% bottom -1rem;
-  opacity: 0.08;
-  animation: driftBottom 34s ease-in-out infinite;
+  animation-delay: 8s;
 }
 
 .profile-grid {
@@ -574,6 +607,13 @@ main {
   margin-bottom: 22px;
 }
 
+.signal-top h3 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: white;
+}
+
 .signal-bars {
   display: flex;
   align-items: end;
@@ -583,10 +623,13 @@ main {
 
 .signal-bars span {
   width: 4px;
-  background: var(--green);
   border-radius: 999px;
-  box-shadow: 0 0 10px rgba(70,229,143,0.5);
   animation: equalize 1.3s ease-in-out infinite;
+}
+
+.green-bars span {
+  background: var(--green);
+  box-shadow: 0 0 10px rgba(70,229,143,0.5);
 }
 
 .blue-bars span {
@@ -818,19 +861,9 @@ main {
   pointer-events: none;
 }
 
-@keyframes driftLeft {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(-6deg); }
-  50% { transform: translate3d(12px, -8px, 0) rotate(-5deg); }
-}
-
-@keyframes driftRight {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(6deg); }
-  50% { transform: translate3d(-12px, -8px, 0) rotate(5deg); }
-}
-
-@keyframes driftBottom {
-  0%, 100% { transform: translate3d(-50%, 0, 0); }
-  50% { transform: translate3d(-50%, -10px, 0); }
+@keyframes driftSlow {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
 }
 
 @keyframes equalize {
@@ -876,9 +909,13 @@ main {
     grid-column: span 2;
   }
 
-  .profile-section::before,
-  .profile-section::after {
-    opacity: 0.2;
+  .art-left,
+  .art-right,
+  .art-bottom,
+  .signal-left,
+  .signal-right,
+  .signal-bottom {
+    opacity: 0.12;
   }
 }
 
@@ -946,11 +983,12 @@ main {
     height: 180px;
   }
 
-  .profile-section::before,
-  .profile-section::after,
-  .signal-section::before,
-  .signal-section::after {
+  .art-left,
+  .art-right,
+  .art-bottom,
+  .signal-left,
+  .signal-right,
+  .signal-bottom {
     opacity: 0.08;
-    background-size: 180px auto, 180px auto;
   }
 }
