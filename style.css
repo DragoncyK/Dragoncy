@@ -408,6 +408,7 @@ main {
 .profile-section,
 .signal-section {
   position: relative;
+  z-index: 0;
 }
 
 .profile-section::before,
@@ -418,7 +419,7 @@ main {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -430,7 +431,7 @@ main {
   background-image: 
     linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%),
     url("zerotwoleft.png");
-  background-size: 100% 100%, min(34vw, 460px) auto;
+  background-size: 100% 100%, 460px auto;
   background-position: 0 0, left -10vw center;
   opacity: 0.28;
   animation: driftLeft 28s ease-in-out infinite;
@@ -447,11 +448,18 @@ main {
 }
 
 .signal-section::before {
-  background-image: 
-    linear-gradient(180deg, rgba(5,5,9,0) 0%, rgba(5,5,9,0.22) 78%, rgba(5,5,9,0.86) 100%),
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(5,5,9,0) 0%,
+      rgba(5,5,9,0.22) 78%,
+      rgba(5,5,9,0.86) 100%
+    ),
     url("zerotwobottom.png");
-  background-size: 100% 100%, min(24vw, 300px) auto;
-  background-position: 0 0, center bottom -2rem;
+
+  background-size: 100% 100%, 300px auto;
+  background-position: 0 0, center bottom;
+
   opacity: 0.20;
   animation: driftBottom 30s ease-in-out infinite;
 }
