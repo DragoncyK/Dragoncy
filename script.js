@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const activities = Array.isArray(data.activities) ? data.activities : [];
       const gameActivity = activities.find((act) => act.id !== "spotify:1" && act.name);
 
-      let discordHTML = `
+      discordWidget.innerHTML = `
         <div class="status-layout">
           <div class="status-dot" style="background:${currentColor}; color:${currentColor};"></div>
           <div class="status-copy">
@@ -81,27 +81,20 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="status-detail">Connection ${discordStatus === "offline" ? "interrupted" : "stable"}.</div>
           </div>
         </div>
-      `;
-
-      if (gameActivity) {
-        discordHTML += `
+        ${gameActivity ? `
           <div class="activity-box">
             <div class="activity-label">Executing process</div>
             <div class="activity-name">${escapeHTML(gameActivity.name)}</div>
             ${gameActivity.details ? `<div class="activity-text">${escapeHTML(gameActivity.details)}</div>` : ""}
             ${gameActivity.state ? `<div class="activity-text">${escapeHTML(gameActivity.state)}</div>` : ""}
           </div>
-        `;
-      } else {
-        discordHTML += `
+        ` : `
           <div class="activity-box">
             <div class="activity-label">Executing process</div>
             <div class="activity-text">No active high-load simulation detected.</div>
           </div>
-        `;
-      }
-
-      discordWidget.innerHTML = discordHTML;
+        `}
+      `;
 
       if (data.spotify) {
         const track = data.spotify.song || "Unknown track";
@@ -115,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="track-badge">Live Stream</div>
               <div class="track-title">${escapeHTML(track)}</div>
               <div class="track-artist">by ${escapeHTML(artist)}</div>
+              <div class="track-bar"><span></span></div>
             </div>
           </div>
         `;
