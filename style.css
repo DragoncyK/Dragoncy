@@ -386,6 +386,55 @@ main {
   padding: 96px 0;
 }
 
+/* IMPORTANT: these are background layers only, they do not take layout space */
+.profile-section::before,
+.profile-section::after,
+.signal-section::before,
+.signal-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: blur(3px) saturate(1.04) contrast(1.02);
+  mix-blend-mode: screen;
+}
+
+.profile-section::before {
+  background-image: url("zerotwoleft.png");
+  background-position: left -10vw top 6rem;
+  background-size: min(28vw, 340px);
+  transform: translate3d(calc(var(--mx, 0px) * 0.12), calc(var(--my, 0px) * 0.12), 0);
+  animation: driftLeft 28s ease-in-out infinite;
+}
+
+.profile-section::after {
+  background-image: url("zerotworight.png"), url("zerotwobottom.png");
+  background-position: right -10vw top 5rem, center bottom -6rem;
+  background-size: min(28vw, 340px), min(20vw, 260px);
+  transform: translate3d(calc(var(--mx, 0px) * -0.12), calc(var(--my, 0px) * 0.12), 0);
+  animation: driftRight 32s ease-in-out infinite;
+}
+
+.signal-section::before {
+  background-image: url("zerotwobottom.png");
+  background-position: center bottom -5rem;
+  background-size: min(24vw, 300px);
+  opacity: 0.08;
+  animation: driftBottom 30s ease-in-out infinite;
+}
+
+.signal-section::after {
+  background-image: url("zerotwoleft.png");
+  background-position: left -12vw bottom -4rem;
+  background-size: min(26vw, 320px);
+  opacity: 0.08;
+  animation: driftLeft 30s ease-in-out infinite;
+}
+
 .section-head {
   margin-bottom: 34px;
   position: relative;
@@ -402,49 +451,6 @@ main {
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0.12em;
-}
-
-.section-bg {
-  position: absolute;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.14;
-  filter: blur(2px) saturate(1.05) contrast(1.03);
-  mix-blend-mode: screen;
-  animation: drift 24s ease-in-out infinite;
-}
-
-.section-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.art-left {
-  left: -16%;
-  top: 8%;
-  width: 310px;
-  height: 540px;
-  transform: rotate(-8deg);
-}
-
-.art-right {
-  right: -16%;
-  top: 4%;
-  width: 300px;
-  height: 510px;
-  transform: rotate(8deg);
-  animation-delay: 4s;
-}
-
-.art-bottom {
-  left: 50%;
-  bottom: -18%;
-  transform: translateX(-50%);
-  width: 250px;
-  height: 350px;
-  opacity: 0.1;
-  animation-delay: 8s;
 }
 
 .profile-grid {
@@ -494,8 +500,13 @@ main {
   background: #06060a;
 }
 
-.profile-status p {
+.profile-status p,
+.info-card p,
+.widget-sub {
   color: var(--muted);
+}
+
+.profile-status p {
   font-size: 0.95rem;
   line-height: 1.8;
 }
@@ -527,7 +538,6 @@ main {
 }
 
 .info-card p {
-  color: var(--muted);
   line-height: 1.9;
 }
 
@@ -639,11 +649,6 @@ main {
   color: #fff;
 }
 
-.widget-sub {
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
 .footer {
   max-width: 1400px;
   margin: 0 auto;
@@ -696,9 +701,19 @@ main {
   pointer-events: none;
 }
 
-@keyframes drift {
-  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
-  50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
+@keyframes driftLeft {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-8deg); }
+  50% { transform: translate3d(10px, -12px, 0) rotate(-7deg); }
+}
+
+@keyframes driftRight {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(8deg); }
+  50% { transform: translate3d(-10px, -10px, 0) rotate(7deg); }
+}
+
+@keyframes driftBottom {
+  0%, 100% { transform: translate3d(-50%, 0, 0); }
+  50% { transform: translate3d(-50%, -10px, 0); }
 }
 
 @keyframes equalize {
@@ -742,12 +757,6 @@ main {
 
   .wide {
     grid-column: span 2;
-  }
-
-  .art-left,
-  .art-right,
-  .art-bottom {
-    opacity: 0.08;
   }
 }
 
@@ -808,9 +817,11 @@ main {
     height: 92px;
   }
 
-  .art-left,
-  .art-right,
-  .art-bottom {
-    display: none;
+  .profile-section::before,
+  .profile-section::after,
+  .signal-section::before,
+  .signal-section::after {
+    opacity: 0.04;
+    background-size: 180px auto, 180px auto;
   }
 }
