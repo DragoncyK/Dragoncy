@@ -110,16 +110,16 @@ main,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
-  transform: scale(0.86);
-  filter: saturate(1.02) contrast(1.02) brightness(0.72);
+  object-position: center 22%;
+  transform: scale(1.08);
+  filter: saturate(1.06) contrast(1.04) brightness(0.76);
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(5,5,9,0.08) 0%, rgba(5,5,9,0.48) 52%, rgba(5,5,9,0.92) 100%);
+    linear-gradient(180deg, rgba(5,5,9,0.08) 0%, rgba(5,5,9,0.46) 52%, rgba(5,5,9,0.92) 100%);
 }
 
 .hero-vignette {
@@ -384,55 +384,7 @@ main {
 .section {
   position: relative;
   padding: 96px 0;
-}
-
-/* IMPORTANT: these are background layers only, they do not take layout space */
-.profile-section::before,
-.profile-section::after,
-.signal-section::before,
-.signal-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.12;
-  background-repeat: no-repeat;
-  background-size: contain;
-  filter: blur(3px) saturate(1.04) contrast(1.02);
-  mix-blend-mode: screen;
-}
-
-.profile-section::before {
-  background-image: url("zerotwoleft.png");
-  background-position: left -10vw top 6rem;
-  background-size: min(28vw, 340px);
-  transform: translate3d(calc(var(--mx, 0px) * 0.12), calc(var(--my, 0px) * 0.12), 0);
-  animation: driftLeft 28s ease-in-out infinite;
-}
-
-.profile-section::after {
-  background-image: url("zerotworight.png"), url("zerotwobottom.png");
-  background-position: right -10vw top 5rem, center bottom -6rem;
-  background-size: min(28vw, 340px), min(20vw, 260px);
-  transform: translate3d(calc(var(--mx, 0px) * -0.12), calc(var(--my, 0px) * 0.12), 0);
-  animation: driftRight 32s ease-in-out infinite;
-}
-
-.signal-section::before {
-  background-image: url("zerotwobottom.png");
-  background-position: center bottom -5rem;
-  background-size: min(24vw, 300px);
-  opacity: 0.08;
-  animation: driftBottom 30s ease-in-out infinite;
-}
-
-.signal-section::after {
-  background-image: url("zerotwoleft.png");
-  background-position: left -12vw bottom -4rem;
-  background-size: min(26vw, 320px);
-  opacity: 0.08;
-  animation: driftLeft 30s ease-in-out infinite;
+  isolation: isolate;
 }
 
 .section-head {
@@ -451,6 +403,56 @@ main {
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0.12em;
+}
+
+/* Fondo integrado, no ocupa espacio */
+.profile-section::before,
+.profile-section::after,
+.signal-section::before,
+.signal-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: blur(1px) saturate(1.08) brightness(0.9) contrast(1.02);
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.profile-section::before {
+  background-image: url("zerotwoleft.png");
+  background-size: min(30vw, 390px);
+  background-position: left 3vw center;
+  transform: translate3d(calc(var(--mx, 0px) * 0.12), calc(var(--my, 0px) * 0.08), 0) rotate(-6deg);
+  animation: driftLeft 28s ease-in-out infinite;
+}
+
+.profile-section::after {
+  background-image: url("zerotworight.png");
+  background-size: min(30vw, 390px);
+  background-position: right 3vw center;
+  transform: translate3d(calc(var(--mx, 0px) * -0.12), calc(var(--my, 0px) * 0.08), 0) rotate(6deg);
+  animation: driftRight 30s ease-in-out infinite;
+}
+
+.signal-section::before {
+  background-image: url("zerotwobottom.png");
+  background-size: min(24vw, 290px);
+  background-position: center bottom -2rem;
+  opacity: 0.14;
+  animation: driftBottom 30s ease-in-out infinite;
+}
+
+.signal-section::after {
+  background-image: url("zerotwobottom.png");
+  background-size: min(18vw, 210px);
+  background-position: left 8% bottom -1rem;
+  opacity: 0.08;
+  animation: driftBottom 34s ease-in-out infinite;
 }
 
 .profile-grid {
@@ -560,8 +562,8 @@ main {
 }
 
 .signal-card {
-  min-height: 250px;
-  padding: 22px;
+  min-height: 270px;
+  padding: 24px;
 }
 
 .signal-top {
@@ -598,7 +600,7 @@ main {
 .signal-bars span:nth-child(4) { height: 12px; animation-delay: 0.36s; }
 
 .widget {
-  min-height: 160px;
+  min-height: 170px;
   display: flex;
   align-items: center;
 }
@@ -610,8 +612,8 @@ main {
 }
 
 .orb {
-  width: 120px;
-  height: 120px;
+  width: 118px;
+  height: 118px;
   border-radius: 50%;
   position: relative;
   flex: 0 0 auto;
@@ -647,6 +649,121 @@ main {
   font-size: 1.05rem;
   font-weight: 800;
   color: #fff;
+}
+
+.widget-sub {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.spotify-layout,
+.status-layout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.spotify-art {
+  width: 98px;
+  height: 98px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.26);
+  flex: 0 0 auto;
+}
+
+.track-copy,
+.status-copy {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+}
+
+.track-badge {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 800;
+}
+
+.track-title,
+.status-name {
+  font-size: 1.08rem;
+  font-weight: 900;
+  color: white;
+}
+
+.track-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist,
+.status-detail {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.64);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-bar {
+  margin-top: 12px;
+  width: 100%;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.track-bar span {
+  display: block;
+  height: 100%;
+  width: 42%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #1db954, #58e08a);
+  box-shadow: 0 0 20px rgba(29,185,84,0.36);
+}
+
+.status-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 16px currentColor;
+  flex: 0 0 auto;
+}
+
+.activity-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.activity-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.44);
+  margin-bottom: 0.35rem;
+}
+
+.activity-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: white;
+}
+
+.activity-text {
+  margin-top: 0.25rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.92rem;
 }
 
 .footer {
@@ -702,13 +819,13 @@ main {
 }
 
 @keyframes driftLeft {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(-8deg); }
-  50% { transform: translate3d(10px, -12px, 0) rotate(-7deg); }
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-6deg); }
+  50% { transform: translate3d(12px, -8px, 0) rotate(-5deg); }
 }
 
 @keyframes driftRight {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(8deg); }
-  50% { transform: translate3d(-10px, -10px, 0) rotate(7deg); }
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(6deg); }
+  50% { transform: translate3d(-12px, -8px, 0) rotate(5deg); }
 }
 
 @keyframes driftBottom {
@@ -757,6 +874,11 @@ main {
 
   .wide {
     grid-column: span 2;
+  }
+
+  .profile-section::before,
+  .profile-section::after {
+    opacity: 0.2;
   }
 }
 
@@ -807,7 +929,9 @@ main {
     grid-column: auto;
   }
 
-  .widget-fallback {
+  .widget-fallback,
+  .spotify-layout,
+  .status-layout {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -817,11 +941,16 @@ main {
     height: 92px;
   }
 
+  .spotify-art {
+    width: 100%;
+    height: 180px;
+  }
+
   .profile-section::before,
   .profile-section::after,
   .signal-section::before,
   .signal-section::after {
-    opacity: 0.04;
+    opacity: 0.08;
     background-size: 180px auto, 180px auto;
   }
 }
