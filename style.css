@@ -88,8 +88,7 @@ a {
 
 .hero,
 main,
-.footer,
-.top-status {
+.footer {
   position: relative;
   z-index: 1;
 }
@@ -112,8 +111,8 @@ main,
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transform: scale(0.93);
-  filter: saturate(1.05) contrast(1.04) brightness(0.72);
+  transform: scale(0.86);
+  filter: saturate(1.02) contrast(1.02) brightness(0.72);
 }
 
 .hero-overlay {
@@ -422,18 +421,18 @@ main {
 }
 
 .art-left {
-  left: -9%;
-  top: 6%;
-  width: 330px;
-  height: 560px;
+  left: -16%;
+  top: 8%;
+  width: 310px;
+  height: 540px;
   transform: rotate(-8deg);
 }
 
 .art-right {
-  right: -8%;
+  right: -16%;
   top: 4%;
-  width: 320px;
-  height: 530px;
+  width: 300px;
+  height: 510px;
   transform: rotate(8deg);
   animation-delay: 4s;
 }
