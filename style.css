@@ -409,8 +409,6 @@ main {
 .signal-section {
   position: relative;
   z-index: 0;
-  overflow: hidden;
-  isolation: isolate;
 }
 
 .profile-section::before,
@@ -423,56 +421,74 @@ main {
   pointer-events: none;
   z-index: 0;
   background-repeat: no-repeat;
-  background-position: center;
   background-size: contain;
-  opacity: 1;
-  filter: none;
-  mix-blend-mode: normal;
+  background-position: center;
+  mix-blend-mode: screen;
+  filter: blur(1px) saturate(1.08) brightness(0.95) contrast(1.03);
 }
 
-/* LEFT IMAGE */
 .profile-section::before {
   background-image:
-    linear-gradient(90deg, rgba(5,5,9,0.90) 0%, rgba(5,5,9,0.18) 24%, rgba(5,5,9,0) 38%),
-    url("./zerotwoleft.png");
+    linear-gradient(
+      90deg,
+      rgba(5,5,9,0.94) 0%,
+      rgba(5,5,9,0.20) 22%,
+      rgba(5,5,9,0) 35%
+    ),
+    url("zerotwoleft.png");
+
   background-size: 100% 100%, 460px auto;
-  background-position: 0 0, left -10vw center;
-  opacity: 0.95;
+  background-position: 0 0, left center;
+  opacity: 0.28;
+  animation: driftLeft 28s ease-in-out infinite;
 }
 
-/* RIGHT IMAGE */
 .profile-section::after {
   background-image:
-    linear-gradient(270deg, rgba(5,5,9,0.90) 0%, rgba(5,5,9,0.18) 24%, rgba(5,5,9,0) 38%),
-    url("./zerotworight.png");
+    linear-gradient(
+      270deg,
+      rgba(5,5,9,0.94) 0%,
+      rgba(5,5,9,0.20) 22%,
+      rgba(5,5,9,0) 35%
+    ),
+    url("zerotworight.png");
+
   background-size: 100% 100%, 460px auto;
-  background-position: 0 0, right -10vw center;
-  opacity: 0.95;
+  background-position: 0 0, right center;
+  opacity: 0.28;
+  animation: driftRight 30s ease-in-out infinite;
 }
 
-/* BOTTOM IMAGE */
 .signal-section::before {
   background-image:
     linear-gradient(
       180deg,
       rgba(5,5,9,0) 0%,
-      rgba(5,5,9,0.18) 70%,
-      rgba(5,5,9,0.85) 100%
+      rgba(5,5,9,0.22) 78%,
+      rgba(5,5,9,0.86) 100%
     ),
-    url("./zerotwobottom.png");
-  background-size: 100% 100%, 360px auto;
+    url("zerotwobottom.png");
+
+  background-size: 100% 100%, 300px auto;
   background-position: 0 0, center bottom;
-  opacity: 0.92;
+  opacity: 0.20;
+  animation: driftBottom 30s ease-in-out infinite;
 }
 
-/* EXTRA LEFT IMAGE IN SIGNAL SECTION */
 .signal-section::after {
   background-image:
-    linear-gradient(90deg, rgba(5,5,9,0.92) 0%, rgba(5,5,9,0.16) 24%, rgba(5,5,9,0) 38%),
-    url("./zerotwoleft.png");
+    linear-gradient(
+      90deg,
+      rgba(5,5,9,0.94) 0%,
+      rgba(5,5,9,0.20) 20%,
+      rgba(5,5,9,0) 32%
+    ),
+    url("zerotwoleft.png");
+
   background-size: 100% 100%, 300px auto;
-  background-position: 0 0, left -12vw bottom -2rem;
-  opacity: 0.65;
+  background-position: 0 0, left bottom;
+  opacity: 0.14;
+  animation: driftLeft 32s ease-in-out infinite;
 }
 
 .profile-section > *,
@@ -481,6 +497,32 @@ main {
   z-index: 1;
 }
 
+@keyframes driftLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes driftRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes driftBottom {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
 /* --- MAQUETACIÓN INTERNA DE MAIN --- */
 .profile-grid {
   display: grid;
