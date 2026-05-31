@@ -423,22 +423,22 @@ main {
   z-index: 0;
   background-repeat: no-repeat;
   mix-blend-mode: screen;
-  filter: blur(1px) saturate(1.08) brightness(0.95) contrast(1.03);
+  filter: blur(1px) saturate(1.08) brightness(1.05);
 }
 
 .profile-section::before {
   background-image:
     linear-gradient(
       90deg,
-      rgba(5,5,9,0.94) 0%,
-      rgba(5,5,9,0.20) 22%,
-      rgba(5,5,9,0) 35%
+      rgba(5,5,9,0.65) 0%,
+      rgba(5,5,9,0.15) 20%,
+      rgba(5,5,9,0) 45%
     ),
     url("zerotwoleft.png");
 
-  background-size: 100% 100%, contain;
-  background-position: 0 0, -80px center;
-  opacity: 0.28;
+  background-size: 100% 100%, 520px auto;
+  background-position: 0 0, -20px center;
+  opacity: 0.55;
   animation: driftLeft 28s ease-in-out infinite;
 }
 
@@ -446,15 +446,15 @@ main {
   background-image:
     linear-gradient(
       270deg,
-      rgba(5,5,9,0.94) 0%,
-      rgba(5,5,9,0.20) 22%,
-      rgba(5,5,9,0) 35%
+      rgba(5,5,9,0.65) 0%,
+      rgba(5,5,9,0.15) 20%,
+      rgba(5,5,9,0) 45%
     ),
     url("zerotworight.png");
 
-  background-size: 100% 100%, contain;
-  background-position: 0 0, calc(100% + 80px) center;
-  opacity: 0.28;
+  background-size: 100% 100%, 520px auto;
+  background-position: 0 0, calc(100% + 20px) center;
+  opacity: 0.55;
   animation: driftRight 30s ease-in-out infinite;
 }
 
@@ -463,14 +463,14 @@ main {
     linear-gradient(
       180deg,
       rgba(5,5,9,0) 0%,
-      rgba(5,5,9,0.22) 78%,
-      rgba(5,5,9,0.86) 100%
+      rgba(5,5,9,0.15) 75%,
+      rgba(5,5,9,0.55) 100%
     ),
     url("zerotwobottom.png");
 
-  background-size: 100% 100%, contain;
-  background-position: 0 0, center calc(100% + 40px);
-  opacity: 0.20;
+  background-size: 100% 100%, 360px auto;
+  background-position: 0 0, center calc(100% + 20px);
+  opacity: 0.35;
   animation: driftBottom 30s ease-in-out infinite;
 }
 
@@ -478,37 +478,47 @@ main {
   background-image:
     linear-gradient(
       90deg,
-      rgba(5,5,9,0.94) 0%,
-      rgba(5,5,9,0.20) 20%,
-      rgba(5,5,9,0) 32%
+      rgba(5,5,9,0.55) 0%,
+      rgba(5,5,9,0.10) 25%,
+      rgba(5,5,9,0) 50%
     ),
     url("zerotwoleft.png");
 
-  background-size: 100% 100%, contain;
-  background-position: 0 0, -60px bottom;
-  opacity: 0.14;
+  background-size: 100% 100%, 320px auto;
+  background-position: 0 0, -30px bottom;
+  opacity: 0.25;
   animation: driftLeft 32s ease-in-out infinite;
 }
 
-.profile-section > *,
-.signal-section > * {
+.profile-section > ,
+.signal-section > {
   position: relative;
   z-index: 1;
 }
-
-@keyframes driftLeft {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(20px); }
-}
-
 @keyframes driftRight {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-20px); }
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-25px);
+  }
 }
 
 @keyframes driftBottom {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+@keyframes driftLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(25px);
+  }
 }
 /* --- MAQUETACIÓN INTERNA DE MAIN --- */
 .profile-grid {
