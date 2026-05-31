@@ -421,7 +421,9 @@ main {
 }
 
 .profile-section::before {
-  background-image: linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%), url("zerotwoleft.png");
+  background-image:
+    linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%),
+    url("zerotwoleft.png");
   background-size: 100% 100%, min(34vw, 460px) auto;
   background-position: 0 0, left -10vw center;
   opacity: 0.28;
@@ -429,7 +431,9 @@ main {
 }
 
 .profile-section::after {
-  background-image: linear-gradient(270deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%), url("zerotworight.png");
+  background-image:
+    linear-gradient(270deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%),
+    url("zerotworight.png");
   background-size: 100% 100%, min(34vw, 460px) auto;
   background-position: 0 0, right -10vw center;
   opacity: 0.28;
@@ -437,7 +441,9 @@ main {
 }
 
 .signal-section::before {
-  background-image: linear-gradient(180deg, rgba(5,5,9,0) 0%, rgba(5,5,9,0.22) 78%, rgba(5,5,9,0.86) 100%), url("zerotwobottom.png");
+  background-image:
+    linear-gradient(180deg, rgba(5,5,9,0) 0%, rgba(5,5,9,0.22) 78%, rgba(5,5,9,0.86) 100%),
+    url("zerotwobottom.png");
   background-size: 100% 100%, min(24vw, 300px) auto;
   background-position: 0 0, center bottom -2rem;
   opacity: 0.20;
@@ -445,16 +451,22 @@ main {
 }
 
 .signal-section::after {
-  background-image: linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 20%, rgba(5,5,9,0) 32%), url("zerotwoleft.png");
+  background-image:
+    linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 20%, rgba(5,5,9,0) 32%),
+    url("zerotwoleft.png");
   background-size: 100% 100%, min(24vw, 300px) auto;
   background-position: 0 0, left -12vw bottom -2rem;
   opacity: 0.14;
   animation: driftLeft 32s ease-in-out infinite;
 }
 
-.profile-grid {
+.profile-section > *,
+.signal-section > * {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+}
+
+.profile-grid {
   display: grid;
   grid-template-columns: 340px 1fr 1fr;
   gap: 18px;
@@ -467,7 +479,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100%;
 }
 
 .profile-avatar-wrap {
@@ -551,8 +562,6 @@ main {
 }
 
 .signal-grid {
-  position: relative;
-  z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
@@ -574,7 +583,6 @@ main {
 .signal-top h3 {
   font-size: 1.55rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
   color: white;
 }
 
@@ -656,121 +664,6 @@ main {
   font-size: 1.05rem;
   font-weight: 800;
   color: #fff;
-}
-
-.widget-sub {
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.spotify-layout,
-.status-layout {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.spotify-art {
-  width: 98px;
-  height: 98px;
-  border-radius: 18px;
-  object-fit: cover;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.26);
-  flex: 0 0 auto;
-}
-
-.track-copy,
-.status-copy {
-  display: grid;
-  gap: 4px;
-  width: 100%;
-  min-width: 0;
-}
-
-.track-badge {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--green);
-  font-weight: 800;
-}
-
-.track-title,
-.status-name {
-  font-size: 1.08rem;
-  font-weight: 900;
-  color: white;
-}
-
-.track-title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.track-artist,
-.status-detail {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.64);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.track-bar {
-  margin-top: 12px;
-  width: 100%;
-  height: 7px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  overflow: hidden;
-}
-
-.track-bar span {
-  display: block;
-  height: 100%;
-  width: 42%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #1db954, #58e08a);
-  box-shadow: 0 0 20px rgba(29,185,84,0.36);
-}
-
-.status-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  box-shadow: 0 0 16px currentColor;
-  flex: 0 0 auto;
-}
-
-.activity-box {
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 18px;
-  background: rgba(0, 0, 0, 0.26);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.activity-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.44);
-  margin-bottom: 0.35rem;
-}
-
-.activity-name {
-  font-size: 1rem;
-  font-weight: 800;
-  color: white;
-}
-
-.activity-text {
-  margin-top: 0.25rem;
-  color: rgba(255,255,255,0.7);
-  font-size: 0.92rem;
 }
 
 .footer {
@@ -881,6 +774,13 @@ main {
 
   .wide {
     grid-column: span 2;
+  }
+
+  .profile-section::before,
+  .profile-section::after,
+  .signal-section::before,
+  .signal-section::after {
+    opacity: 0.16;
   }
 }
 
