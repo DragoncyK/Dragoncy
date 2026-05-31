@@ -109,8 +109,8 @@ main,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 28%;
-  transform: scale(1.18);
+  object-position: center 24%;
+  transform: scale(1.26);
   filter: saturate(1.08) contrast(1.04) brightness(0.78);
 }
 
@@ -118,7 +118,7 @@ main,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(5,5,9,0.06) 0%, rgba(5,5,9,0.40) 50%, rgba(5,5,9,0.90) 100%);
+    linear-gradient(180deg, rgba(5,5,9,0.04) 0%, rgba(5,5,9,0.34) 50%, rgba(5,5,9,0.90) 100%);
 }
 
 .hero-vignette {
@@ -404,88 +404,52 @@ main {
   letter-spacing: 0.12em;
 }
 
-.bg-art {
-  position: absolute;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.24;
-  filter: blur(0.8px) saturate(1.08) brightness(0.95) contrast(1.03);
-  mix-blend-mode: screen;
-  animation: driftSlow 22s ease-in-out infinite;
-}
-
-.bg-art img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.profile-section::before {
+.profile-section::before,
+.profile-section::after,
+.signal-section::before,
+.signal-section::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(255, 74, 121, 0.07), transparent 34%),
-    radial-gradient(circle at 80% 45%, rgba(138, 147, 255, 0.06), transparent 34%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  mix-blend-mode: screen;
+  filter: blur(1px) saturate(1.08) brightness(0.95) contrast(1.03);
 }
 
-.art-left {
-  left: -8%;
-  top: 7%;
-  width: min(31vw, 410px);
-  height: min(60vw, 740px);
-  transform: rotate(-6deg);
+.profile-section::before {
+  background-image: linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%), url("zerotwoleft.png");
+  background-size: 100% 100%, min(34vw, 460px) auto;
+  background-position: 0 0, left -10vw center;
+  opacity: 0.28;
+  animation: driftLeft 28s ease-in-out infinite;
 }
 
-.art-right {
-  right: -8%;
-  top: 5%;
-  width: min(31vw, 410px);
-  height: min(60vw, 740px);
-  transform: rotate(6deg);
-  animation-delay: 4s;
+.profile-section::after {
+  background-image: linear-gradient(270deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%), url("zerotworight.png");
+  background-size: 100% 100%, min(34vw, 460px) auto;
+  background-position: 0 0, right -10vw center;
+  opacity: 0.28;
+  animation: driftRight 30s ease-in-out infinite;
 }
 
-.art-bottom {
-  left: 50%;
-  bottom: -14%;
-  transform: translateX(-50%);
-  width: min(22vw, 300px);
-  height: min(32vw, 420px);
-  opacity: 0.18;
-  animation-delay: 8s;
+.signal-section::before {
+  background-image: linear-gradient(180deg, rgba(5,5,9,0) 0%, rgba(5,5,9,0.22) 78%, rgba(5,5,9,0.86) 100%), url("zerotwobottom.png");
+  background-size: 100% 100%, min(24vw, 300px) auto;
+  background-position: 0 0, center bottom -2rem;
+  opacity: 0.20;
+  animation: driftBottom 30s ease-in-out infinite;
 }
 
-.signal-left {
-  left: -10%;
-  top: 4%;
-  width: min(26vw, 330px);
-  height: min(52vw, 620px);
-  transform: rotate(-7deg);
-  opacity: 0.16;
-}
-
-.signal-right {
-  right: -10%;
-  top: 3%;
-  width: min(26vw, 330px);
-  height: min(52vw, 620px);
-  transform: rotate(7deg);
-  opacity: 0.16;
-  animation-delay: 5s;
-}
-
-.signal-bottom {
-  left: 50%;
-  bottom: -12%;
-  transform: translateX(-50%);
-  width: min(18vw, 250px);
-  height: min(28vw, 360px);
+.signal-section::after {
+  background-image: linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 20%, rgba(5,5,9,0) 32%), url("zerotwoleft.png");
+  background-size: 100% 100%, min(24vw, 300px) auto;
+  background-position: 0 0, left -12vw bottom -2rem;
   opacity: 0.14;
-  animation-delay: 8s;
+  animation: driftLeft 32s ease-in-out infinite;
 }
 
 .profile-grid {
@@ -861,9 +825,19 @@ main {
   pointer-events: none;
 }
 
-@keyframes driftSlow {
-  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
-  50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
+@keyframes driftLeft {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-6deg); }
+  50% { transform: translate3d(12px, -8px, 0) rotate(-5deg); }
+}
+
+@keyframes driftRight {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(6deg); }
+  50% { transform: translate3d(-12px, -8px, 0) rotate(5deg); }
+}
+
+@keyframes driftBottom {
+  0%, 100% { transform: translate3d(-50%, 0, 0); }
+  50% { transform: translate3d(-50%, -10px, 0); }
 }
 
 @keyframes equalize {
@@ -907,15 +881,6 @@ main {
 
   .wide {
     grid-column: span 2;
-  }
-
-  .art-left,
-  .art-right,
-  .art-bottom,
-  .signal-left,
-  .signal-right,
-  .signal-bottom {
-    opacity: 0.12;
   }
 }
 
@@ -983,12 +948,10 @@ main {
     height: 180px;
   }
 
-  .art-left,
-  .art-right,
-  .art-bottom,
-  .signal-left,
-  .signal-right,
-  .signal-bottom {
-    opacity: 0.08;
+  .profile-section::before,
+  .profile-section::after,
+  .signal-section::before,
+  .signal-section::after {
+    opacity: 0.12;
   }
 }
