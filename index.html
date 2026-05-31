@@ -1,76 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pilot 002 // Terminal</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilot 002 // Interface</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuente Rajdhani para ese toque Mecha/Sci-Fi -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="page-grain"></div>
-    <div class="ambient ambient-left"></div>
-    <div class="ambient ambient-right"></div>
 
-    <main class="bento-container">
+    <!-- NAV BAR SUPERIOR -->
+    <nav class="top-nav">
+        <div class="nav-left"><span class="highlight">002</span> PILOT INTERFACE</div>
+        <div class="nav-center">
+            <a href="#profile" class="active">PROFILE</a>
+            <a href="#connection">CONNECTION</a>
+            <a href="#signal">SIGNAL</a>
+        </div>
+        <div class="nav-right"><div class="status-dot-small"></div> LINK STATUS</div>
+    </nav>
+
+    <!-- SECCIÓN HERO (HELLO, DARLING) -->
+    <header class="hero-section">
+        <!-- Fondo de la parte superior -->
+        <div class="hero-bg" style="background-image: url('zerotwobackground.jpg');"></div>
         
-        <article class="bento-card profile-card">
-            <div class="card-glow"></div>
-            <div class="profile-header">
-                <span class="pill live">ONLINE</span>
-                <span class="card-kicker">002 // SYSTEM</span>
-            </div>
-            <img src="Hiro.jpg" alt="Profile picture" class="avatar" />
-            <h1 class="title">Hello, Darling.</h1>
-            <p class="subtitle">Pilot 002 terminal active. Immersed in high-pressure environments, systems architecture, and precise execution.</p>
-        </article>
-
-        <article class="bento-card text-card accent-pink">
-            <div class="card-icon">⚡</div>
-            <h2>// Logic & Systems</h2>
-            <p>Focusing on structural flow. Building foundations with C++, arrays, iostream, and digital electronics.</p>
-        </article>
-
-        <article class="bento-card text-card accent-gold">
-            <div class="card-icon">📈</div>
-            <h2>// Market Analysis</h2>
-            <p>Algorithmic execution and pattern recognition. Navigating volatility through MetaTrader 5 and MQL5 logic.</p>
-        </article>
-
-        <article class="bento-card text-card accent-blue">
-            <div class="card-icon">🎮</div>
-            <h2>// Tactical Ops</h2>
-            <p>Competitive deployment. Maintaining high-level engagement across Apex Legends and League of Legends.</p>
-        </article>
-
-        <article class="bento-card signal-card">
-            <div class="card-header-line">
-                <span class="card-kicker blue">// SIGNAL LINE</span>
-            </div>
-            <div id="discord-widget-content" class="widget-container">
-                <div class="widget-placeholder">
-                    <div class="loader"></div>
-                    <p>Synchronizing vital signs...</p>
+        <div class="hero-content">
+            <div class="hero-left">
+                <span class="kicker">| 002 // CONNECTING</span>
+                <h1 class="hero-title">HELLO,<br><span class="highlight">DARLING.</span></h1>
+                <p class="hero-subtitle">Pilot 002 Online.</p>
+                <button class="hero-btn">ENTER PROFILE &nbsp; &rarr;</button>
+                <div class="pagination">
+                    <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
                 </div>
             </div>
-        </article>
-
-        <article class="bento-card signal-card wide-card">
-            <div class="card-header-line">
-                <span class="card-kicker green">// SOUNDTRACK PULSE</span>
-            </div>
-            <div id="spotify-widget-content" class="widget-container">
-                <div class="widget-placeholder">
-                    <div class="loader"></div>
-                    <p>Waiting for audio signal...</p>
+            
+            <div class="hero-right">
+                <div class="pilot-id-box">
+                    <div class="label">PILOT ID</div>
+                    <div class="value">002</div>
+                </div>
+                <div class="status-box">
+                    <div class="label">STATUS</div>
+                    <div class="value">ACTIVE <div class="status-dot-small"></div></div>
                 </div>
             </div>
-        </article>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <div class="arrow-down"></div>
+        </div>
+    </header>
 
+    <!-- SECCIÓN PRINCIPAL (BENTO / CARTAS) -->
+    <main class="main-content">
+        <!-- Fondos decorativos laterales -->
+        <div class="side-bg left-bg" style="background-image: url('zerotwoleft.jpg');"></div>
+        <div class="side-bg right-bg" style="background-image: url('zerotworight.jpg');"></div>
+
+        <div class="content-wrapper">
+            <!-- TITULO SECCIÓN 1 -->
+            <div class="section-title">
+                <span class="kicker pink">// PROFILE OVERVIEW</span>
+                <h2>THE PILOT.</h2>
+            </div>
+
+            <!-- GRID DEL PERFIL -->
+            <div class="profile-grid">
+                
+                <!-- Carta Izquierda (Perfil) -->
+                <div class="card pilot-card">
+                    <div class="avatar-container">
+                        <img src="hiroavatar.jpg" alt="Hiro Pilot" class="avatar">
+                    </div>
+                    <h3 class="pink-text">// ACTIVE PILOT</h3>
+                    <p>Immersed in engineering, systems and high-pressure environments. Analytical mind, precise execution, and a strong appetite for risk and reward.</p>
+                    <div class="barcode">|| | | ||| | || | ||| | ||</div>
+                </div>
+
+                <!-- Carta Centro (Ingeniería) -->
+                <div class="card sub-card">
+                    <h3 class="pink-text">// ENGINEERING</h3>
+                    <div class="icon">⎔</div>
+                    <p>Digital electronics, RTL design, and C++ systems architecture with structured logic and clean flow.</p>
+                </div>
+
+                <!-- Carta Derecha (Gaming) -->
+                <div class="card sub-card">
+                    <h3 class="blue-text">// GAMING</h3>
+                    <div class="icon">🎮</div>
+                    <p>Competitive and tactical play across Apex Legends, League of Legends and strategy-heavy sessions.</p>
+                </div>
+
+                <!-- Carta Inferior (Trader) -->
+                <div class="card trader-card">
+                    <h3 class="gold-text">📈 // DAY TRADER</h3>
+                    <p>Market volatility specialist focused on discipline, timing, and asymmetric opportunity.</p>
+                    <p class="quote">"Don't fear death. Fear that your life ends before you accomplish your goals."</p>
+                </div>
+            </div>
+
+            <!-- TITULO SECCIÓN 2 -->
+            <div class="section-title margin-top">
+                <span class="kicker pink">// CONNECTION LINE</span>
+                <h2>LIVE SIGNAL.</h2>
+            </div>
+
+            <!-- GRID DE SEÑALES (SPOTIFY Y DISCORD) -->
+            <div class="signal-grid">
+                
+                <!-- Spotify Card -->
+                <div class="card signal-card">
+                    <div class="card-header">
+                        <h3 class="green-text">// SPOTIFY SYNC</h3>
+                        <div class="signal-bars green">|||</div>
+                    </div>
+                    <div id="spotify-widget-content" class="widget-body">
+                        <div class="circle-visualizer green-border"></div>
+                        <div class="widget-info">
+                            <h4 class="white-text">Not playing anything right now</h4>
+                            <p>Start a track and it'll show up here.</p>
+                        </div>
+                    </div>
+                    <div class="audio-wave">||||||||||||||||||||||||||||||||||||</div>
+                </div>
+
+                <!-- Lanyard/Discord Card -->
+                <div class="card signal-card">
+                    <div class="card-header">
+                        <h3 class="blue-text">// PILOT STATUS</h3>
+                        <div class="signal-bars blue">|||</div>
+                    </div>
+                    <div id="discord-widget-content" class="widget-body">
+                        <div class="circle-visualizer blue-border heartbeat">
+                            <div class="pulse-line"></div>
+                        </div>
+                        <div class="widget-info">
+                            <h4 class="white-text"><span class="status-dot-small blue"></span> OFFLINE</h4>
+                            <p>No active session detected. Waiting for connection...</p>
+                            <div class="stats">
+                                <div><span class="label">UPTIME</span><br>--</div>
+                                <div><span class="label">ACTIVITY</span><br>None</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </main>
 
-    <footer class="footer">
-        <p>"Found you, my darling." - Zero Two</p>
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-bg" style="background-image: url('zerotwobottom.jpg');"></div>
+        <div class="footer-content">
+            <h1 class="highlight">002</h1>
+            <p class="spaced-text">Z E R O &nbsp; T W O</p>
+            <div class="arrow-down red-arrow"></div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
