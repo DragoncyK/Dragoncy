@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ID de Lanyard (Mantengo el que pusiste)
+    // ID de Lanyard del usuario
     const lanyardAPI = "https://api.lanyard.rest/v1/users/738501782413639790";
     const spotifyWidget = document.getElementById("spotify-widget-content");
     const discordWidget = document.getElementById("discord-widget-content");
 
     const statusColors = {
-        online: "#31d07d",
-        idle: "#f7b955",
-        dnd: "#ff4d6d",
-        offline: "#7b8497"
+        online: "#1db954", // Green
+        idle: "#f0b90b",   // Gold
+        dnd: "#ff2a6d",    // Pink
+        offline: "#8b8b99" // Muted
     };
 
     function escapeHTML(str = "") {
@@ -34,27 +34,38 @@ document.addEventListener("DOMContentLoaded", () => {
             const activities = Array.isArray(data.activities) ? data.activities : [];
             const gameActivity = activities.find((act) => act.id !== "spotify:1" && act.name);
 
-            let discordHTML = `
-                <div class="status-layout">
-                    <div class="status-dot" style="background:${currentColor}; color:${currentColor};"></div>
-                    <div class="status-copy">
-                        <div class="status-name" style="color:${currentColor};">${escapeHTML(discordStatus.toUpperCase())}</div>
-                        <div class="status-detail">Network connection stable.</div>
+            // Determinar texto de actividad
+            let activityName = "None";
+            let uptimeStr = "--";
+
+            if (gameActivity) {
+                activityName = escapeHTML(gameActivity.name);
+                if (gameActivity.timestamps && gameActivity.timestamps.start) {
+                    const diff = Date.now() - gameActivity.timestamps.start;
+                    const hours = Math.floor(diff / 3600000);
+                    const minutes = Math.floor((diff % 3600000) / 60000);
+                    uptimeStr = `${hours}h ${minutes}m`;
+                } else {
+                    uptimeStr = "Active";
+                }
+            }
+
+            discordWidget.innerHTML = `
+                <div class="circle-visualizer heartbeat" style="border-color: ${currentColor};">
+                    <div class="pulse-line" style="background: ${currentColor}; box-shadow: 0 0 10px ${currentColor};"></div>
+                </div>
+                <div class="widget-info">
+                    <h4 class="white-text">
+                        <span class="status-dot-small" style="background-color: ${currentColor}; box-shadow: 0 0 8px ${currentColor};"></span> 
+                        ${escapeHTML(discordStatus.toUpperCase())}
+                    </h4>
+                    <p>${gameActivity ? escapeHTML(gameActivity.details || "In Session...") : "No active session detected. Waiting for connection..."}</p>
+                    <div class="stats">
+                        <div><span class="label">UPTIME</span><br>${uptimeStr}</div>
+                        <div><span class="label">ACTIVITY</span><br>${activityName}</div>
                     </div>
                 </div>
             `;
-
-            if (gameActivity) {
-                discordHTML += `
-                    <div class="activity-box">
-                        <div class="activity-name">${escapeHTML(gameActivity.name)}</div>
-                        ${gameActivity.details ? `<div class="activity-text">${escapeHTML(gameActivity.details)}</div>` : ""}
-                        ${gameActivity.state ? `<div class="activity-text">${escapeHTML(gameActivity.state)}</div>` : ""}
-                    </div>
-                `;
-            }
-
-            discordWidget.innerHTML = discordHTML;
 
             // --- SPOTIFY STATUS ---
             if (data.spotify) {
@@ -63,33 +74,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 const art = data.spotify.album_art_url || "";
 
                 spotifyWidget.innerHTML = `
-                    <div class="spotify-layout">
-                        <img src="${escapeHTML(art)}" alt="Album art" class="spotify-art">
-                        <div class="track-copy">
-                            <div class="track-title">${escapeHTML(track)}</div>
-                            <div class="track-artist">by ${escapeHTML(artist)}</div>
-                            <div class="track-bar"><span></span></div>
-                        </div>
+                    <div class="circle-visualizer" style="border:none; overflow:hidden;">
+                        <img src="${escapeHTML(art)}" alt="Album art" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="widget-info">
+                        <h4 class="white-text">${escapeHTML(track)}</h4>
+                        <p>by ${escapeHTML(artist)}</p>
                     </div>
                 `;
             } else {
+                // Estado por defecto (No reproduciendo)
                 spotifyWidget.innerHTML = `
-                    <div class="status-layout">
-                        <div class="status-dot" style="background:#7b8497; color:#7b8497;"></div>
-                        <div class="status-copy">
-                            <div class="status-name" style="color:#7b8497;">SILENT</div>
-                            <div class="status-detail">No audio stream detected.</div>
-                        </div>
+                    <div class="circle-visualizer green-border"></div>
+                    <div class="widget-info">
+                        <h4 class="white-text">Not playing anything right now</h4>
+                        <p>Start a track and it'll show up here.</p>
                     </div>
                 `;
             }
         } catch (error) {
             console.error("Lanyard Connection Error:", error);
-            // Fallback silencioso en caso de error
         }
     }
 
-    // Llamada inicial y bucle de actualización cada 5 segundos
+    // Inicializar y actualizar
     updateLanyardStatus();
     setInterval(updateLanyardStatus, 5000);
 });
