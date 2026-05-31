@@ -420,8 +420,16 @@ main {
   filter: blur(1px) saturate(1.08) brightness(0.95) contrast(1.03);
 }
 
+.profile-section,
+.signal-section {
+  position: relative;
+}
+
 .profile-section::before {
-  background-image:
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
     linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%),
     url("zerotwoleft.png");
   background-size: 100% 100%, min(34vw, 460px) auto;
@@ -431,7 +439,10 @@ main {
 }
 
 .profile-section::after {
-  background-image:
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
     linear-gradient(270deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%),
     url("zerotworight.png");
   background-size: 100% 100%, min(34vw, 460px) auto;
@@ -441,7 +452,10 @@ main {
 }
 
 .signal-section::before {
-  background-image:
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
     linear-gradient(180deg, rgba(5,5,9,0) 0%, rgba(5,5,9,0.22) 78%, rgba(5,5,9,0.86) 100%),
     url("zerotwobottom.png");
   background-size: 100% 100%, min(24vw, 300px) auto;
@@ -451,7 +465,10 @@ main {
 }
 
 .signal-section::after {
-  background-image:
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
     linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 20%, rgba(5,5,9,0) 32%),
     url("zerotwoleft.png");
   background-size: 100% 100%, min(24vw, 300px) auto;
@@ -460,8 +477,11 @@ main {
   animation: driftLeft 32s ease-in-out infinite;
 }
 
-.profile-section > *,
-.signal-section > * {
+
+
+
+.profile-section > ,
+.signal-section > {
   position: relative;
   z-index: 1;
 }
