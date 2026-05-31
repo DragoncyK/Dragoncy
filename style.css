@@ -404,6 +404,12 @@ main {
   letter-spacing: 0.12em;
 }
 
+/* --- CONFIGURACIÓN DE SECCIONES CON FONDOS ANIMADOS --- */
+.profile-section,
+.signal-section {
+  position: relative;
+}
+
 .profile-section::before,
 .profile-section::after,
 .signal-section::before,
@@ -412,7 +418,7 @@ main {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1; /* Forzado al fondo absoluto detrás de las tarjetas */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -420,15 +426,7 @@ main {
   filter: blur(1px) saturate(1.08) brightness(0.95) contrast(1.03);
 }
 
-.profile-section,
-.signal-section {
-  position: relative;
-}
-
 .profile-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
   background-image: 
     linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%),
     url("zerotwoleft.png");
@@ -439,9 +437,6 @@ main {
 }
 
 .profile-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
   background-image: 
     linear-gradient(270deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 22%, rgba(5,5,9,0) 35%),
     url("zerotworight.png");
@@ -452,9 +447,6 @@ main {
 }
 
 .signal-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
   background-image: 
     linear-gradient(180deg, rgba(5,5,9,0) 0%, rgba(5,5,9,0.22) 78%, rgba(5,5,9,0.86) 100%),
     url("zerotwobottom.png");
@@ -465,9 +457,6 @@ main {
 }
 
 .signal-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
   background-image: 
     linear-gradient(90deg, rgba(5,5,9,0.94) 0%, rgba(5,5,9,0.2) 20%, rgba(5,5,9,0) 32%),
     url("zerotwoleft.png");
@@ -477,15 +466,14 @@ main {
   animation: driftLeft 32s ease-in-out infinite;
 }
 
-
-
-
-.profile-section > ,
-.signal-section > {
+/* Selector corregido con el asterisco universal (*) */
+.profile-section > *,
+.signal-section > * {
   position: relative;
   z-index: 1;
 }
 
+/* --- MAQUETACIÓN INTERNA DE MAIN --- */
 .profile-grid {
   display: grid;
   grid-template-columns: 340px 1fr 1fr;
@@ -539,12 +527,6 @@ main {
 .profile-status p {
   font-size: 0.95rem;
   line-height: 1.8;
-}
-
-.mini-title {
-  margin-bottom: 12px;
-  font-weight: 700;
-  font-size: 0.72rem;
 }
 
 .pink { color: var(--pink); }
@@ -686,6 +668,7 @@ main {
   color: #fff;
 }
 
+/* --- FOOTER Y MISC --- */
 .footer {
   max-width: 1400px;
   margin: 0 auto;
@@ -719,10 +702,6 @@ main {
   transform: translateY(0);
 }
 
-.glass {
-  position: relative;
-}
-
 .glass::before {
   content: "";
   position: absolute;
@@ -738,6 +717,7 @@ main {
   pointer-events: none;
 }
 
+/* --- ANIMACIONES KEYFRAMES --- */
 @keyframes driftLeft {
   0%, 100% { transform: translate3d(0, 0, 0) rotate(-6deg); }
   50% { transform: translate3d(12px, -8px, 0) rotate(-5deg); }
@@ -749,8 +729,8 @@ main {
 }
 
 @keyframes driftBottom {
-  0%, 100% { transform: translate3d(-50%, 0, 0); }
-  50% { transform: translate3d(-50%, -10px, 0); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
 }
 
 @keyframes equalize {
@@ -763,6 +743,7 @@ main {
   50% { transform: translateY(5px); }
 }
 
+/* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 1200px) {
   .hero-topbar {
     grid-template-columns: 1fr auto;
